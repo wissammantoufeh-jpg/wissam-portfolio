@@ -62,14 +62,16 @@
     --muted: #c9c9c9;
 
     /* Contact form */
-    --background: #ffffff;
-    --label: #1f2a44;
-    --input-border: #cbd5e1;
+    --form-bg: #3E4349;
+    --field-bg: #ffffff;
+    --label: #ffffff;
+    --field-text: #1f2a44;
+    --input-border: #ffffff;
     --placeholder: #64748b;
     --button-bg: #fbbf24;
     --button-hover: #f8b81f;
     --button-text: #111827;
-    --focus-border: #94a3b8;
+    --focus-border: #ffffff;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
@@ -97,25 +99,10 @@
 
   /* ----------  HERO / LANDING  ---------- */
   .hero {
-    padding: 18px 26px 32px;
+    padding: 0 26px 32px;
     position: relative;
     background: #000000;
     isolation: isolate;
-  }
-
-  /* Logo */
-  .logo {
-    position: absolute;
-    top: 24px;
-    left: 26px;
-    z-index: 9999;
-    width: 46px;
-    height: auto;
-    max-height: 46px;
-    display: block;
-    object-fit: contain;
-    object-position: left center;
-    pointer-events: none;
   }
 
   /* Hero video */
@@ -123,11 +110,11 @@
     position: relative;
     z-index: 1;
     width: calc(100% + 52px);
-    height: 340px;
+    height: 385px;
     margin-left: -26px;
     margin-right: -26px;
     margin-top: 0;
-    padding-top: 54px;
+    padding-top: 68px;
     background: #000000;
     display: flex;
     justify-content: center;
@@ -139,7 +126,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    height: 286px;
+    height: 315px;
     display: block;
     background: #000000;
     object-fit: cover;
@@ -149,7 +136,7 @@
 
   /* Big headline block */
   .headline {
-    margin-top: 22px;
+    margin-top: 46px;
     width: 190px;
     font-family: "Morganite", "Barlow Condensed", "Inter", sans-serif;
     text-transform: uppercase;
@@ -209,7 +196,7 @@
     display: flex;
     align-items: center;
     gap: 22px;
-    margin-top: 22px;
+    margin-top: 18px;
     font-family: "Morganite", "Barlow Condensed", sans-serif;
     font-size: 60px;
     font-weight: 700;
@@ -226,8 +213,16 @@
 
   /* CTA block */
   .cta {
-    margin-top: 46px;
-    padding-top: 8px;
+    margin-top: 74px;
+    margin-left: -26px;
+    margin-right: -26px;
+    padding: 68px 26px 72px;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.58) 55%, rgba(0,0,0,0.72) 100%),
+      url("./assets/BG%20WORK.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .cta-title {
     font-family: "Morganite", "Barlow Condensed", sans-serif;
@@ -248,9 +243,11 @@
     border: none;
     border-radius: 6px;
     padding: 13px 32px;
-    font-family: "Inter", sans-serif;
-    font-size: 15px;
-    font-weight: 500;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background .2s ease, transform .12s ease, box-shadow .2s ease;
     box-shadow: 0 1px 0 rgba(0,0,0,0.2);
@@ -261,8 +258,8 @@
 
   /* WORK SECTION */
   .work {
-    margin-top: 48px;
-    padding-top: 8px;
+    margin-top: 86px;
+    padding-top: 12px;
   }
   .section-title {
     font-family: "Morganite", "Barlow Condensed", sans-serif;
@@ -279,8 +276,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 4px;
-    margin-bottom: 8px;
+    gap: 8px;
+    margin-bottom: 20px;
   }
 
   .view-more {
@@ -299,7 +296,7 @@
   .work-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 10px;
   }
   .work-tile {
     position: relative;
@@ -338,14 +335,14 @@
 
   /* CLIENTS */
   .clients {
-    margin-top: 16px;
+    margin-top: 72px;
     padding-top: 0;
   }
   .clients-marquee {
     width: calc(100% + 52px);
     margin-left: -26px;
     margin-right: -26px;
-    margin-top: 6px;
+    margin-top: 8px;
     overflow: hidden;
     position: relative;
   }
@@ -354,11 +351,11 @@
     display: flex;
     align-items: center;
     width: max-content;
-    animation: clients-scroll 18s linear infinite;
+    animation: clients-scroll 24s linear infinite;
   }
 
   .clients-track img {
-    width: 560px;
+    width: 1120px;
     height: auto;
     display: block;
     flex: 0 0 auto;
@@ -370,29 +367,41 @@
       transform: translateX(0);
     }
     to {
-      transform: translateX(-560px);
+      transform: translateX(-1120px);
     }
   }
 
   /* FOOTER */
   .footer {
-    margin-top: 34px;
-    padding-top: 6px;
-    padding-bottom: 28px;
+    margin-top: 30px;
+    margin-left: -26px;
+    margin-right: -26px;
+    padding: 56px 26px 28px;
     font-family: "Morganite", "Barlow Condensed", sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.02em;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.78) 100%),
+      url("./assets/BG%20WORK.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .footer-logo {
+    width: 46px;
+    height: auto;
+    display: block;
+    margin-bottom: 24px;
   }
   .footer-msg {
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 700;
-    line-height: 1.05;
+    line-height: 1.5;
     color: var(--white);
-    margin: 0;
   }
   .footer-msg .accent { color: var(--yellow); }
   .footer-copy {
-    margin-top: 22px;
+    margin-top: 28px;
     font-size: 16px;
     color: var(--white);
     opacity: 0.85;
@@ -422,11 +431,11 @@
     width: 100%;
     max-width: 402px;
     max-height: calc(100vh - 46px);
-    background: var(--background);
+    background: var(--form-bg);
     padding: 18px 16px 25px;
     position: relative;
     overflow-y: auto;
-    border-radius: 22px 22px 0 0;
+    border-radius: 8px 8px 0 0;
     transform: translateY(100%);
     transition: transform 350ms cubic-bezier(0.22, 0.61, 0.36, 1);
     touch-action: pan-y;
@@ -454,10 +463,12 @@
   .label {
     display: block;
     margin-bottom: 7px;
-    font-family: "Inter", sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.4;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 0.9;
     color: var(--label);
   }
 
@@ -465,13 +476,13 @@
     width: 100%;
     height: 48px;
     border: 1px solid var(--input-border);
-    border-radius: 7px;
-    background: var(--background);
+    border-radius: 4px;
+    background: var(--field-bg);
     padding: 0 15px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: var(--label);
+    color: var(--field-text);
     outline: none;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
     -webkit-appearance: none;
@@ -490,8 +501,8 @@
     width: 100%;
     height: 48px;
     border: 1px solid var(--input-border);
-    border-radius: 7px;
-    background: var(--background);
+    border-radius: 4px;
+    background: var(--field-bg);
     display: flex;
     align-items: center;
     padding: 0 15px;
@@ -501,9 +512,11 @@
     display: flex;
     align-items: center;
     gap: 4px;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--label);
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--field-text);
     flex: 0 0 auto;
   }
   .chevron {
@@ -520,10 +533,11 @@
     border: 0;
     outline: none;
     background: transparent;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--label);
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--field-text);
   }
   .phone-number::placeholder {
     color: var(--placeholder);
@@ -534,13 +548,13 @@
     width: 100%;
     height: 128px;
     border: 1px solid var(--input-border);
-    border-radius: 7px;
-    background: var(--background);
+    border-radius: 4px;
+    background: var(--field-bg);
     padding: 12px 15px;
     font-family: "Inter", sans-serif;
     font-size: 16px;
     font-weight: 400;
-    color: var(--label);
+    color: var(--field-text);
     outline: none;
     resize: none;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
@@ -558,12 +572,14 @@
     height: 48px;
     margin-top: 28px;
     border: none;
-    border-radius: 7px;
+    border-radius: 4px;
     background: var(--button-bg);
     color: var(--button-text);
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     cursor: pointer;
     transition: background .2s ease, transform .12s ease;
   }
@@ -587,7 +603,6 @@
     <!-- WM monogram logo -->
     <!-- Hero video -->
     <div class="hero-video-wrap">
-      <img class="logo" src="./assets/Logo.png" alt="Wissam Designs logo" />
       <video
         class="hero-video"
         src="./assets/Video%20Hero%20Loop.mp4"
@@ -627,7 +642,7 @@
     <!-- CTA -->
     <div class="cta">
       <h2 class="cta-title">
-        GOT A <span class="accent">BRAND, WEBSITE, OR WILD IDEA?</span>
+        <span class="accent">GOT A</span> BRAND, WEBSITE, OR WILD IDEA?
       </h2>
       <button class="cta-button" id="openContactForm" type="button">Let's Create</button>
     </div>
@@ -636,7 +651,6 @@
     <div class="work">
       <div class="section-heading-row">
         <h2 class="section-title">RECENT <span class="accent">WORK</span></h2>
-        <a class="view-more" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer">View More &gt;</a>
       </div>
       <div class="work-grid">
         <a class="work-tile" href="https://www.instagram.com/reel/DK-WJ_6IP_X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 1">
@@ -660,6 +674,7 @@
 
     <!-- FOOTER -->
     <div class="footer">
+      <img class="footer-logo" src="./assets/Logo.png" alt="Wissam Designs logo" />
       <p class="footer-msg">
         THIS WEBSITE IS STILL GETTING DRESSED UP.<br/>
         MORE <span class="accent">MAGIC IS COMING SOON.</span>
@@ -676,14 +691,12 @@
     id="contactForm"
     name="contact"
     method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
+    action="https://formsubmit.co/wissam@wissamdesigns.com"
   >
-    <div class="sheet-drag-handle" aria-hidden="true"></div>    <!-- Netlify Forms settings -->
-    <input type="hidden" name="form-name" value="contact" />
-    <p class="honeypot-field">
-      <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
-    </p>
+    <div class="sheet-drag-handle" aria-hidden="true"></div>
+    <input type="hidden" name="_subject" value="New message from Wissam Designs website" />
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="table" />
 
     <div class="form-inner">
       <div class="field-group">
@@ -733,10 +746,6 @@
   let currentDragY = 0;
   let isDragging = false;
 
-  function encodeFormData(formElement) {
-    return new URLSearchParams(new FormData(formElement)).toString();
-  }
-
   function openSheet() {
     sheet.classList.add("is-open");
     sheet.setAttribute("aria-hidden", "false");
@@ -755,7 +764,7 @@
 
   openButton.addEventListener("click", openSheet);
 
-  // Close when pressing outside the white contact form.
+  // Close when pressing outside the contact form.
   sheet.addEventListener("click", (e) => {
     if (e.target === sheet) closeSheet();
   });
@@ -828,43 +837,7 @@
     }
   });
 
-  // Netlify Forms AJAX submit — no redirect.
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector(".submit-button");
-    const originalText = btn.textContent;
-
-    btn.textContent = "Sending...";
-    btn.disabled = true;
-
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: encodeFormData(form)
-      });
-
-      if (!response.ok) {
-        throw new Error("Form submission failed");
-      }
-
-      btn.textContent = "Sent ✓";
-
-      setTimeout(() => {
-        form.reset();
-        btn.textContent = originalText;
-        btn.disabled = false;
-        closeSheet();
-      }, 1200);
-    } catch (error) {
-      btn.textContent = "Try again";
-      btn.disabled = false;
-      console.error(error);
-    }
-  });
+  // Static GitHub Pages form: submission is handled by FormSubmit.
 </script>
 </body>
 </html>
