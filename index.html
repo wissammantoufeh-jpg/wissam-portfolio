@@ -594,6 +594,19 @@
     .cta-button { padding: 14px 34px; }
   }
 </style>
+
+<script>
+  // Desktop visitors go to Instagram. Mobile visitors stay on this website.
+  (function () {
+    const instagramUrl = "https://www.instagram.com/wissamdesigns/";
+    const isMobileDevice = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isSmallScreen = window.matchMedia("(max-width: 768px)").matches;
+
+    if (!isMobileDevice && !isSmallScreen) {
+      window.location.replace(instagramUrl);
+    }
+  })();
+</script>
 </head>
 <body>
 
