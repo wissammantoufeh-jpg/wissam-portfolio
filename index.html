@@ -79,7 +79,7 @@
 
   body {
     background: #000000;
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Morganite", "Barlow Condensed", system-ui, sans-serif;
     color: var(--white);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -188,7 +188,7 @@
     font-weight: 500;
     letter-spacing: 0;
     line-height: 0.8;
-    margin-top: 7px;
+    margin-top: 0;
   }
 
   /* social icons row */
@@ -203,12 +203,13 @@
     line-height: 0.8;
   }
   .socials a {
-    color: var(--white);
+    color: var(--yellow);
     text-decoration: none;
     line-height: 1;
     transition: color .2s ease, transform .2s ease;
   }
   .socials a.at { color: var(--yellow); font-size: 60px; }
+  .socials a.ln { color: var(--yellow); }
   .socials a:hover { transform: translateY(-2px); }
 
   /* CTA block */
@@ -217,11 +218,12 @@
     margin-left: -26px;
     margin-right: -26px;
     padding: 68px 26px 72px;
-    background:
-      linear-gradient(90deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.58) 55%, rgba(0,0,0,0.72) 100%),
-      url("./assets/BG%20WORK.jpg");
-    background-size: cover;
-    background-position: center;
+    text-align: left;
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.45) 100%),
+      url("./assets/BG WORK.jpg");
+    background-size: 145%;
+    background-position: center center;
     background-repeat: no-repeat;
   }
   .cta-title {
@@ -231,13 +233,18 @@
     font-size: 60px;
     line-height: 0.85;
     letter-spacing: 0;
-    margin: 0 0 18px 0;
+    margin: 0 0 18px;
+    text-align: left;
     color: var(--white);
   }
   .cta-title .accent { color: var(--yellow); }
 
   .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
     background: var(--yellow);
     color: #1a1a1a;
     border: none;
@@ -245,7 +252,7 @@
     padding: 13px 32px;
     font-family: "Morganite", "Barlow Condensed", sans-serif;
     font-size: 28px;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     cursor: pointer;
@@ -281,7 +288,7 @@
   }
 
   .view-more {
-    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--yellow);
@@ -380,11 +387,11 @@
     font-family: "Morganite", "Barlow Condensed", sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    background:
-      linear-gradient(90deg, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.62) 55%, rgba(0,0,0,0.78) 100%),
-      url("./assets/BG%20WORK.jpg");
-    background-size: cover;
-    background-position: center;
+    background-image:
+      linear-gradient(90deg, rgba(0,0,0,0.52) 0%, rgba(0,0,0,0.32) 55%, rgba(0,0,0,0.50) 100%),
+      url("./assets/BG WORK.jpg");
+    background-size: 145%;
+    background-position: center center;
     background-repeat: no-repeat;
   }
   .footer-logo {
@@ -394,15 +401,16 @@
     margin-bottom: 24px;
   }
   .footer-msg {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: 900;
     line-height: 1.5;
     color: var(--white);
   }
   .footer-msg .accent { color: var(--yellow); }
   .footer-copy {
     margin-top: 28px;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 900;
     color: var(--white);
     opacity: 0.85;
     letter-spacing: 0.04em;
@@ -467,7 +475,7 @@
     text-transform: uppercase;
     letter-spacing: 0.02em;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 900;
     line-height: 0.9;
     color: var(--label);
   }
@@ -479,9 +487,10 @@
     border-radius: 4px;
     background: var(--field-bg);
     padding: 0 15px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--field-text);
     outline: none;
     box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
@@ -551,9 +560,10 @@
     border-radius: 4px;
     background: var(--field-bg);
     padding: 12px 15px;
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
-    font-weight: 400;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
     color: var(--field-text);
     outline: none;
     resize: none;
@@ -571,13 +581,14 @@
     width: 100%;
     height: 48px;
     margin-top: 28px;
+    text-align: center;
     border: none;
     border-radius: 4px;
     background: var(--button-bg);
     color: var(--button-text);
     font-family: "Morganite", "Barlow Condensed", sans-serif;
     font-size: 30px;
-    font-weight: 700;
+    font-weight: 900;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     cursor: pointer;
@@ -849,6 +860,37 @@
       form.style.transform = "";
     }
   });
+
+
+  // Try a few safe file paths for the CTA/footer background.
+  // This helps when GitHub stores the image as JPG/JPEG or inside/outside assets.
+  const bgCandidates = [
+    "./assets/BG WORK.jpg",
+    "./assets/BG WORK.JPG",
+    "./assets/BG WORK.jpeg",
+    "./assets/BG WORK.JPEG",
+    "./BG WORK.jpg",
+    "./BG WORK.JPG"
+  ];
+
+  function setWorkBackground(url) {
+    const imageLayer = `linear-gradient(90deg, rgba(0,0,0,0.48) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.45) 100%), url("${url}")`;
+    document.querySelectorAll(".cta, .footer").forEach((section) => {
+      section.style.backgroundImage = imageLayer;
+    });
+  }
+
+  function testBackground(index = 0) {
+    if (index >= bgCandidates.length) return;
+
+    const testImage = new Image();
+    testImage.onload = () => setWorkBackground(bgCandidates[index]);
+    testImage.onerror = () => testBackground(index + 1);
+    testImage.src = bgCandidates[index];
+  }
+
+  testBackground();
+
 
   // Static GitHub Pages form: submission is handled by FormSubmit.
 </script>
