@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="description" content="Wissam — Web and graphic designer. Got a brand, website, or wild idea? Let's create." />
+<meta name="theme-color" content="#000000" />
+<title>Wissam — Web & Graphic Designer</title>
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="Wissam — Web & Graphic Designer" />
+<meta property="og:description" content="Got a brand, website, or wild idea? Let's create." />
+<meta property="og:type" content="website" />
+
+<!-- Browser tab favicon -->
+<link rel="icon" type="image/png" href="./assets/Logo.png" />
+<link rel="apple-touch-icon" href="./assets/Logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ----------  MORGANITE (local display font)  ---------- */
+  @font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/MORGANITE-BLACK.TTF") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/MORGANITE-BOLD.TTF") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/Morganite-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Morganite";
+    src: url("./assets/fonts/Morganite-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ----------  TOKENS  ---------- */
+  :root {
+    --bg-dark: #000000;
+    --bg-card: #141414;
+    --yellow: #f4c026;
+    --yellow-deep: #e9b21f;
+    --white: #ffffff;
+    --muted: #c9c9c9;
+
+    /* Contact form */
+    --background: #ffffff;
+    --label: #1f2a44;
+    --input-border: #cbd5e1;
+    --placeholder: #64748b;
+    --button-bg: #fbbf24;
+    --button-hover: #f8b81f;
+    --button-text: #111827;
+    --focus-border: #94a3b8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: #000000;
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  /* ----------  PAGE FRAME  ---------- */
+  .page {
+    width: 100%;
+    max-width: 402px;
+    margin: 0 auto;
+    background: #000000;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* ----------  HERO / LANDING  ---------- */
+  .hero {
+    padding: 0 26px 32px;
+    position: relative;
+    background: #000000;
+    isolation: isolate;
+  }
+
+  /* Logo */
+  .logo {
+    position: absolute;
+    top: 22px;
+    left: 26px;
+    z-index: 9999;
+    width: 46px;
+    height: auto;
+    max-height: 46px;
+    display: block;
+    object-fit: contain;
+    object-position: left center;
+    pointer-events: none;
+  }
+
+  /* Hero video */
+  .hero-video-wrap {
+    position: relative;
+    z-index: 1;
+    width: calc(100% + 52px);
+    height: 385px;
+    margin-left: -26px;
+    margin-right: -26px;
+    margin-top: 0;
+    padding-top: 68px;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  .hero-video {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 315px;
+    display: block;
+    background: #000000;
+    object-fit: cover;
+    object-position: center center;
+    transform: none;
+  }
+
+  /* Big headline block */
+  .headline {
+    margin-top: 14px;
+    width: 190px;
+    font-family: "Morganite", "Barlow Condensed", "Inter", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 0.82;
+    color: var(--white);
+  }
+
+  .headline .line-1 {
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 0.78;
+    margin-bottom: 6px;
+    white-space: nowrap;
+  }
+
+  .headline .accent {
+    color: var(--yellow);
+  }
+
+  .headline .line-2 {
+    font-size: 135px;
+    font-weight: 900;
+    line-height: 0.78;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    white-space: nowrap;
+  }
+
+  .headline .line-2 .and {
+    font-size: 135px;
+    font-weight: 100;
+    line-height: 0.78;
+    letter-spacing: 0.01em;
+    color: var(--white);
+  }
+
+  .headline .line-3 {
+    font-size: 135px;
+    font-weight: 900;
+    line-height: 0.78;
+    display: block;
+  }
+
+  .headline .line-4 {
+    font-size: 50px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 0.8;
+    margin-top: 7px;
+  }
+
+  /* social icons row */
+  .socials {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 18px;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 0.8;
+  }
+  .socials a {
+    color: var(--white);
+    text-decoration: none;
+    line-height: 1;
+    transition: color .2s ease, transform .2s ease;
+  }
+  .socials a.at { color: var(--yellow); font-size: 60px; }
+  .socials a:hover { transform: translateY(-2px); }
+
+  /* CTA block */
+  .cta {
+    margin-top: 58px;
+    padding-top: 8px;
+  }
+  .cta-title {
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 0.85;
+    letter-spacing: 0;
+    margin: 0 0 18px 0;
+    color: var(--white);
+  }
+  .cta-title .accent { color: var(--yellow); }
+
+  .cta-button {
+    display: inline-block;
+    background: var(--yellow);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 6px;
+    padding: 13px 32px;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .2s ease, transform .12s ease, box-shadow .2s ease;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+  }
+  .cta-button:hover { background: var(--yellow-deep); }
+  .cta-button:active { transform: translateY(1px); }
+  .cta-button:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+
+  /* WORK SECTION */
+  .work {
+    margin-top: 72px;
+    padding-top: 12px;
+  }
+  .section-title {
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 0.85;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .section-title .accent { color: var(--yellow); }
+
+  .section-heading-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .view-more {
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--yellow);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .view-more:hover {
+    text-decoration: underline;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .work-tile {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 2px;
+    background: #1a1a1a;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 180ms ease;
+  }
+  .work-tile img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    filter: grayscale(100%);
+  }
+  .work-tile::after {
+    /* very subtle B&W vignette consistent with the screenshot */
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
+  }
+
+  .work-tile:hover {
+    transform: translateY(-2px);
+  }
+
+  .work-tile {
+    transition: transform 180ms ease;
+  }
+
+  /* CLIENTS */
+  .clients {
+    margin-top: 18px;
+    padding-top: 2px;
+  }
+  .clients-marquee {
+    width: calc(100% + 52px);
+    margin-left: -26px;
+    margin-right: -26px;
+    margin-top: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .clients-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: clients-scroll 18s linear infinite;
+  }
+
+  .clients-track img {
+    width: 560px;
+    height: auto;
+    display: block;
+    flex: 0 0 auto;
+    filter: grayscale(100%);
+  }
+
+  @keyframes clients-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-560px);
+    }
+  }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 90px;
+    padding-top: 14px;
+    padding-bottom: 22px;
+    font-family: "Morganite", "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .footer-msg {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--white);
+  }
+  .footer-msg .accent { color: var(--yellow); }
+  .footer-copy {
+    margin-top: 28px;
+    font-size: 16px;
+    color: var(--white);
+    opacity: 0.85;
+    letter-spacing: 0.04em;
+  }
+
+  /* ----------  CONTACT SHEET (slide-up bottom form)  ---------- */
+  .contact-sheet {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.52);
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 250ms ease;
+  }
+
+  .contact-sheet.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .contact-form {
+    width: 100%;
+    max-width: 402px;
+    max-height: calc(100vh - 46px);
+    background: var(--background);
+    padding: 18px 16px 25px;
+    position: relative;
+    overflow-y: auto;
+    border-radius: 22px 22px 0 0;
+    transform: translateY(100%);
+    transition: transform 350ms cubic-bezier(0.22, 0.61, 0.36, 1);
+    touch-action: pan-y;
+    will-change: transform;
+  }
+
+  .contact-sheet.is-open .contact-form {
+    transform: translateY(0);
+  }
+
+  .sheet-drag-handle {
+    width: 42px;
+    height: 5px;
+    border-radius: 999px;
+    background: #cbd5e1;
+    margin: 0 auto 16px;
+  }
+
+  .contact-form .form-inner {
+    margin-top: 38px;
+  }
+
+  .field-group { margin-bottom: 24px; }
+
+  .label {
+    display: block;
+    margin-bottom: 7px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--label);
+  }
+
+  .input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    background: var(--background);
+    padding: 0 15px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--label);
+    outline: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .input::placeholder { color: var(--placeholder); }
+  .input:focus,
+  .textarea:focus,
+  .phone-number:focus {
+    border-color: var(--focus-border);
+    box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.18);
+  }
+
+  /* Phone */
+  .phone-input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    background: var(--background);
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  }
+  .country-code {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--label);
+    flex: 0 0 auto;
+  }
+  .chevron {
+    width: 7px;
+    height: 7px;
+    border-right: 1.5px solid #334155;
+    border-bottom: 1.5px solid #334155;
+    transform: rotate(45deg);
+    margin-top: -3px;
+  }
+  .phone-number {
+    margin-left: 16px;
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: transparent;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--label);
+  }
+  .phone-number::placeholder {
+    color: var(--placeholder);
+  }
+
+  .message-group { margin-bottom: 0; }
+  .textarea {
+    width: 100%;
+    height: 128px;
+    border: 1px solid var(--input-border);
+    border-radius: 7px;
+    background: var(--background);
+    padding: 12px 15px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--label);
+    outline: none;
+    resize: none;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+  }
+
+  .honeypot-field {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .submit-button {
+    width: 100%;
+    height: 48px;
+    margin-top: 28px;
+    border: none;
+    border-radius: 7px;
+    background: var(--button-bg);
+    color: var(--button-text);
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background .2s ease, transform .12s ease;
+  }
+  .submit-button:hover { background: var(--button-hover); }
+  .submit-button:active { transform: translateY(1px); }
+
+  /* prevent background scroll when sheet is open */
+  body.lock { overflow: hidden; }
+
+  /* Tap area enlargement for touch */
+  @media (hover: none) {
+    .cta-button { padding: 14px 34px; }
+  }
+</style>
+</head>
+<body>
+
+<main class="page">
+  <!-- ============ LANDING ============ -->
+  <section class="hero">
+    <!-- WM monogram logo -->
+    <!-- Hero video -->
+    <div class="hero-video-wrap">
+      <img class="logo" src="./assets/Logo.png" alt="Wissam Designs logo" />
+      <video
+        class="hero-video"
+        src="./assets/Video%20Hero%20Loop.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="Wissam Designs hero animation"
+      ></video>
+    </div>
+
+    <!-- Headline -->
+    <div class="headline">
+      <div class="line-1">I AM <span class="accent">WISSAM</span></div>
+      <span class="line-2">WEB <span class="and">AND</span></span>
+      <span class="line-3">GRAPHIC</span>
+      <div class="line-4">DESIGNER</div>
+    </div>
+
+    <!-- Socials -->
+    <div class="socials">
+      <a class="at" href="mailto:wissam@wissamdesigns.com" aria-label="Email Wissam">@</a>
+      <a class="ln" href="https://www.linkedin.com/in/wissam-mantoufeh/" target="_blank" rel="noopener noreferrer" aria-label="Wissam on LinkedIn">in</a>
+    </div>
+
+    <!-- CLIENTS -->
+    <div class="clients clients-under-socials">
+      <div class="clients-marquee" aria-label="Client logos">
+        <div class="clients-track">
+          <img src="./assets/Clients.png" alt="Wissam Designs clients" />
+          <img src="./assets/Clients.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+      <h2 class="cta-title">
+        GOT A <span class="accent">BRAND, WEBSITE, OR WILD IDEA?</span>
+      </h2>
+      <button class="cta-button" id="openContactForm" type="button">Let's Create</button>
+    </div>
+
+    <!-- WORK -->
+    <div class="work">
+      <div class="section-heading-row">
+        <h2 class="section-title">RECENT <span class="accent">WORK</span></h2>
+        <a class="view-more" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer">View More &gt;</a>
+      </div>
+      <div class="work-grid">
+        <a class="work-tile" href="https://www.instagram.com/reel/DK-WJ_6IP_X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 1">
+          <img src="./assets/01.png" alt="Instagram work thumbnail 1" />
+        </a>
+
+        <a class="work-tile" href="https://www.instagram.com/reel/DWy7bn8ozua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 2">
+          <img src="./assets/02.png" alt="Instagram work thumbnail 2" />
+        </a>
+
+        <a class="work-tile" href="https://www.instagram.com/reel/DXHnqw3I1wF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 3">
+          <img src="./assets/03.png" alt="Instagram work thumbnail 3" />
+        </a>
+
+        <a class="work-tile" href="https://www.instagram.com/reel/DKr-jexoDOD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 4">
+          <img src="./assets/04.png" alt="Instagram work thumbnail 4" />
+        </a>
+
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p class="footer-msg">
+        THIS WEBSITE IS STILL GETTING DRESSED UP.<br/>
+        MORE <span class="accent">MAGIC IS COMING SOON.</span>
+      </p>
+      <p class="footer-copy">© 2006 | WISSAMDESIGNS.COM</p>
+    </div>
+  </section>
+</main>
+
+<!-- ============ CONTACT FORM SHEET ============ -->
+<section class="contact-sheet" id="contactSheet" aria-hidden="true">
+  <form
+    class="contact-form"
+    id="contactForm"
+    name="contact"
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <div class="sheet-drag-handle" aria-hidden="true"></div>    <!-- Netlify Forms settings -->
+    <input type="hidden" name="form-name" value="contact" />
+    <p class="honeypot-field">
+      <label>Do not fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+    </p>
+
+    <div class="form-inner">
+      <div class="field-group">
+        <label class="label" for="fullName">Full Name</label>
+        <input id="fullName" name="name" class="input" type="text" placeholder="Full Name" autocomplete="name" required />
+      </div>
+
+      <div class="field-group">
+        <label class="label" for="email">Email</label>
+        <input id="email" name="email" class="input" type="email" placeholder="you@company.com" autocomplete="email" required />
+      </div>
+
+      <div class="field-group">
+        <label class="label" for="phone">Phone number</label>
+        <div class="phone-input">
+          <div class="country-code">
+            <span>LB</span>
+            <span class="chevron"></span>
+          </div>
+          <input
+            id="phone"
+            name="phone"
+            class="phone-number"
+            type="tel"
+            placeholder="+961 (0) 000 000"
+            autocomplete="tel"
+          />
+        </div>
+      </div>
+
+      <div class="field-group message-group">
+        <label class="label" for="message">Message</label>
+        <textarea id="message" name="message" class="textarea" required></textarea>
+      </div>
+
+      <button class="submit-button" type="submit">Send message</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  const openButton = document.getElementById("openContactForm");
+  const sheet = document.getElementById("contactSheet");
+  const form = document.getElementById("contactForm");
+
+  let dragStartY = 0;
+  let currentDragY = 0;
+  let isDragging = false;
+
+  function encodeFormData(formElement) {
+    return new URLSearchParams(new FormData(formElement)).toString();
+  }
+
+  function openSheet() {
+    sheet.classList.add("is-open");
+    sheet.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lock");
+    form.style.transform = "";
+    setTimeout(() => document.getElementById("fullName").focus({ preventScroll: true }), 360);
+  }
+
+  function closeSheet() {
+    sheet.classList.remove("is-open");
+    sheet.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lock");
+    form.style.transform = "";
+    if (openButton) openButton.focus({ preventScroll: true });
+  }
+
+  openButton.addEventListener("click", openSheet);
+
+  // Close when pressing outside the white contact form.
+  sheet.addEventListener("click", (e) => {
+    if (e.target === sheet) closeSheet();
+  });
+
+  // Close on Escape.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sheet.classList.contains("is-open")) closeSheet();
+  });
+
+  // Drag down to close.
+  form.addEventListener("touchstart", (e) => {
+    dragStartY = e.touches[0].clientY;
+    currentDragY = 0;
+    isDragging = true;
+    form.style.transition = "none";
+  }, { passive: true });
+
+  form.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+
+    currentDragY = e.touches[0].clientY - dragStartY;
+
+    if (currentDragY > 0) {
+      form.style.transform = `translateY(${currentDragY}px)`;
+    }
+  }, { passive: true });
+
+  form.addEventListener("touchend", () => {
+    if (!isDragging) return;
+
+    isDragging = false;
+    form.style.transition = "";
+
+    if (currentDragY > 90) {
+      closeSheet();
+    } else {
+      form.style.transform = "";
+    }
+  });
+
+  // Desktop mouse drag support.
+  form.addEventListener("mousedown", (e) => {
+    if (!sheet.classList.contains("is-open")) return;
+    dragStartY = e.clientY;
+    currentDragY = 0;
+    isDragging = true;
+    form.style.transition = "none";
+  });
+
+  document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    currentDragY = e.clientY - dragStartY;
+
+    if (currentDragY > 0) {
+      form.style.transform = `translateY(${currentDragY}px)`;
+    }
+  });
+
+  document.addEventListener("mouseup", () => {
+    if (!isDragging) return;
+
+    isDragging = false;
+    form.style.transition = "";
+
+    if (currentDragY > 90) {
+      closeSheet();
+    } else {
+      form.style.transform = "";
+    }
+  });
+
+  // Netlify Forms AJAX submit — no redirect.
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const btn = form.querySelector(".submit-button");
+    const originalText = btn.textContent;
+
+    btn.textContent = "Sending...";
+    btn.disabled = true;
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: encodeFormData(form)
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      btn.textContent = "Sent ✓";
+
+      setTimeout(() => {
+        form.reset();
+        btn.textContent = originalText;
+        btn.disabled = false;
+        closeSheet();
+      }, 1200);
+    } catch (error) {
+      btn.textContent = "Try again";
+      btn.disabled = false;
+      console.error(error);
+    }
+  });
+</script>
+</body>
+</html>
