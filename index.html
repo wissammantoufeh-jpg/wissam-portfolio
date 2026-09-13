@@ -494,6 +494,7 @@
   .poster-line {
     opacity: 0;
     transform: translateY(18px);
+    letter-spacing: 0.018em;
   }
 
   .poster-web-line {
@@ -505,6 +506,7 @@
     line-height: 0.76;
     animation: heroSlideIn 680ms cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
     animation-delay: 90ms;
+    letter-spacing: 0.018em;
   }
 
   .web-word,
@@ -514,6 +516,7 @@
     color: var(--yellow);
     font-size: clamp(82px, 10.8vw, 210px);
     white-space: nowrap;
+    letter-spacing: 0.018em;
   }
 
   .amp-word {
@@ -523,7 +526,8 @@
       margin-left: -0.06em;
       margin-right: 0;
       transform: translateY(-2%);
-    }
+    letter-spacing: 0;
+  }
 
   .poster-studio-line {
     display: flex;
@@ -534,6 +538,7 @@
     line-height: 0.82;
     animation: heroFadeUp 680ms cubic-bezier(0.16, 0.84, 0.44, 1) forwards;
     animation-delay: 240ms;
+    letter-spacing: 0.018em;
   }
 
   .creative-word,
@@ -543,6 +548,7 @@
     color: rgba(255,255,255,0.82);
     font-size: clamp(56px, 7vw, 138px);
     white-space: nowrap;
+    letter-spacing: 0.018em;
   }
 
   .hero-actions {
@@ -650,7 +656,8 @@
     .web-word {
       font-size: clamp(78px, 31vw, 138px);
       color: var(--yellow);
-    }
+    letter-spacing: 0.018em;
+  }
 
     .amp-word {
       top: -0.06em;
@@ -1205,100 +1212,542 @@
       font-size: clamp(17px, 5vw, 22px);
     }
   }
-
-
-
-
-
-
-
-
-
   /* ==========================================================
-     RECENT WORK
+     LET'S TALK — contact section after work
      ========================================================== */
-  .work { margin-top: var(--section-gap); scroll-margin-top: 90px; }
-  .section-heading-row {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 22px;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .section-title {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: var(--section-title);
-    margin: 0;
-  }
-  .view-more {
-    font-family: var(--font-body);
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    color: var(--soft);
-    text-decoration: none;
-    border-bottom: 1px solid var(--divider);
-    padding-bottom: 2px;
-    transition: color 200ms ease, border-color 200ms ease;
-  }
-  .view-more:hover { color: var(--yellow); border-color: var(--yellow); }
-
-  .work-grid {
+  .lets-talk-section {
+    margin-top: clamp(70px, 9vh, 110px);
+margin-bottom: 0;
+    scroll-margin-top: 110px;
+    width: 100%;
+    max-width: 1040px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 3;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
+    justify-items: start;
+    gap: clamp(12px, 1.5vw, 18px);
   }
-  @media (min-width: 700px) {
-    .work-grid {
-      grid-template-columns: repeat(3, 1fr);
+
+  .lets-talk-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(98px, 15vw, 250px);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-align: left;
+    cursor: pointer;
+    background: none;
+    border: 0;
+    padding: 0;
+    position: relative;
+    z-index: 4;
+    white-space: nowrap;
+  }
+
+  .lets-talk-word {
+    display: inline-block;
+    width: max-content;
+    white-space: nowrap;
+    background-image: linear-gradient(90deg, var(--yellow) 0 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position: left center;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: var(--white);
+    -webkit-text-fill-color: var(--white);
+    transition: background-size 260ms ease, -webkit-text-fill-color 0ms linear 70ms;
+  }
+
+  .lets-talk-title:hover .lets-talk-word,
+  .lets-talk-title:focus-visible .lets-talk-word {
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 100%;
+  }
+
+  .lets-talk-title:hover .lets-talk-word:nth-child(1) { transition-delay: 0ms; }
+  .lets-talk-title:hover .lets-talk-word:nth-child(2) { transition-delay: 80ms; }
+
+  .lets-talk-title:focus-visible {
+    outline: none;
+  }
+
+  .lets-talk-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    z-index: 4;
+    gap: clamp(14px, 2vw, 22px);
+  }
+
+  .lets-talk-icon {
+    width: clamp(48px, 4.6vw, 66px);
+    height: clamp(48px, 4.6vw, 66px);
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(0, 0, 0, 0.26);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: color 200ms ease, border-color 200ms ease, background 200ms ease, transform 200ms ease;
+  }
+
+  .lets-talk-icon:hover,
+  .lets-talk-icon:focus-visible {
+    color: var(--yellow);
+    border-color: rgba(244, 192, 38, 0.74);
+    background: rgba(244, 192, 38, 0.10);
+    transform: translateY(-3px);
+    outline: none;
+  }
+
+  .lets-talk-icon svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .lets-talk-section {
+      margin-top: 80px;
+      margin-bottom: 12px;
+    }
+
+    .lets-talk-title {
+      font-size: clamp(72px, 23vw, 118px);
+      white-space: normal;
     }
   }
-  .work-tile {
-    display: block;
-    aspect-ratio: 1 / 1;
+
+
+
+
+
+  /* ==========================================================
+     RECENT WORK — centered auto-scroll showcase
+     ========================================================== */
+  .work {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: clamp(120px, 15vh, 190px);
+    padding: clamp(76px, 8vw, 120px) 0 clamp(54px, 6vw, 86px);
+    scroll-margin-top: 90px;
+    background: transparent;
+    color: var(--white);
     overflow: hidden;
-    background: #0c0c0c;
-    transition: transform 200ms ease;
   }
-  .work-tile:hover { transform: translateY(-2px); }
-  .work-tile img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(1) contrast(1.05);
+
+  .work-showcase {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .work-intro {
+    width: min(100% - 48px, 1040px);
+    margin: 0 auto clamp(38px, 4.6vw, 66px);
+    display: grid;
+    place-items: center;
+    text-align: center;
+  }
+
+  .work-title-shell {
+    position: relative;
+    display: inline-grid;
+    place-items: center;
+    padding: clamp(18px, 2.4vw, 34px) clamp(18px, 3vw, 44px);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .work-title-shell::before {
+    content: none;
+  }
+
+  .work-title-shell::after {
+    content: none;
+  }
+
+  .work-title {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-display);
+    font-size: clamp(94px, 12.4vw, 198px);
+    font-weight: 900;
+    line-height: 0.78;
+    letter-spacing: 0.022em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: transparent;
+  }
+
+
+  .work-title .work-title-word {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0;
+
+    /* White text with darker, more detailed topographic lines clipped inside */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='980' height='620' viewBox='0 0 980 620'%3E%3Crect width='980' height='620' fill='white'/%3E%3Cg fill='none' stroke='%239f9f9f' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round' stroke-opacity='0.95'%3E%3Cpath d='M-90 58C55 12 190 18 318 62c112 38 230 42 354 0 110-37 212-34 328 8'/%3E%3Cpath d='M-94 96C46 50 185 51 314 91c120 37 236 39 360 1 111-35 212-30 327 10'/%3E%3Cpath d='M-92 134C48 96 185 86 316 121c125 34 242 35 365 4 111-28 210-25 319 12'/%3E%3Cpath d='M-88 174C57 139 192 124 322 153c127 29 246 31 369 8 108-21 204-19 309 14'/%3E%3Cpath d='M-84 216C67 183 202 166 332 190c128 24 249 25 374 11 103-12 197-11 294 16'/%3E%3Cpath d='M-80 258C75 227 212 210 344 229c130 19 252 19 378 14 97-4 187-3 278 20'/%3E%3Cpath d='M-74 302C88 273 225 255 358 269c132 14 256 14 384 17 91 2 176 5 258 22'/%3E%3Cpath d='M-68 348C101 322 240 302 374 310c134 9 260 11 390 22 84 7 163 12 236 25'/%3E%3Cpath d='M-60 396C116 374 256 351 392 354c137 4 266 9 400 28 77 11 149 18 208 28'/%3E%3Cpath d='M-52 446C130 428 274 403 414 400c140-3 276 6 414 34 68 14 132 24 172 31'/%3E%3Cpath d='M-44 498C148 484 294 454 438 448c145-6 286 4 430 39 58 14 105 24 132 30'/%3E%3Cpath d='M88 -88C145 -4 158 76 124 152c-31 70-43 138-10 210 35 77 39 151 3 242'/%3E%3Cpath d='M205 -112C263 -13 276 76 239 164c-33 78-41 149-5 223 39 78 49 151 13 241'/%3E%3Cpath d='M338 -118C390 -14 398 82 357 176c-37 85-42 159-2 236 42 80 55 151 17 238'/%3E%3Cpath d='M486 -112C529 -15 534 82 498 178c-35 92-37 170 8 248 43 75 56 145 22 222'/%3E%3Cpath d='M640 -94C676 -8 675 78 644 174c-31 96-28 180 12 255 39 73 48 139 18 211'/%3E%3Cpath d='M795 -72C829 4 826 84 800 171c-27 91-24 181 13 261 36 76 42 136 15 204'/%3E%3C/g%3E%3Cg fill='none' stroke='%238f8f8f' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round' stroke-opacity='0.85'%3E%3Cpath d='M92 118C142 70 218 57 288 90c61 29 106 24 156-15 64-50 152-56 226-13 59 34 116 39 183 9'/%3E%3Cpath d='M112 148C155 111 222 99 282 126c59 27 105 23 155-12 60-42 139-48 207-10 58 32 113 37 177 11'/%3E%3Cpath d='M135 180C173 152 227 143 280 164c58 23 105 19 155-8 55-31 124-35 184-4 56 29 108 34 168 12'/%3E%3Cpath d='M610 292C670 238 758 225 830 272c66 43 87 113 54 177-31 60-101 89-173 67-75-23-119-84-103-151 6-25 20-49 42-73z'/%3E%3Cpath d='M638 318C686 280 750 273 804 306c49 30 65 81 41 126-25 47-79 67-135 51-57-17-91-62-79-112 5-20 17-38 35-53z'/%3E%3Cpath d='M666 344C701 319 747 315 783 337c34 21 45 56 29 86-17 32-53 45-91 34-39-11-61-41-53-75 4-14 12-26 24-38z'/%3E%3Cpath d='M220 390C280 334 374 319 453 360c73 38 96 106 62 168-35 64-113 92-193 66-82-27-128-91-107-158 7-18 18-34 35-46z'/%3E%3Cpath d='M254 416C301 378 368 370 424 399c52 27 70 73 45 116-26 46-82 65-140 46-60-20-91-65-77-111 5-13 13-24 25-34z'/%3E%3Cpath d='M290 443C322 420 366 416 400 434c32 16 43 45 27 72-17 29-53 40-90 28-38-13-57-40-48-68 3-9 9-17 17-23z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 740px 470px;
+    background-position: 48% 48%;
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    animation:
+      workTopoDriftA 1.25s linear infinite alternate,
+      workTopoScaleA 1.9s ease-in-out infinite alternate;
+
+    opacity: 0;
+    transform: translateY(26px);
+    filter: blur(7px);
+    transition:
+      opacity 560ms ease,
+      transform 680ms cubic-bezier(0.16, 0.84, 0.44, 1),
+      filter 680ms ease;
+  }
+
+  .work-title .work-title-word:nth-child(2) {
+    background-size: 820px 520px;
+    background-position: 54% 52%;
+    animation:
+      workTopoDriftB 1.05s linear infinite alternate,
+      workTopoScaleB 1.75s ease-in-out infinite alternate;
+  }
+
+  .work.is-visible .work-title .work-title-word {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .work.is-visible .work-title .work-title-word:nth-child(1) { transition-delay: 0ms; }
+  .work.is-visible .work-title .work-title-word:nth-child(2) { transition-delay: 120ms; }
+  @keyframes workTopoDriftA {
+    0%   { background-position: 24% 34%; }
+    16%  { background-position: 68% 43%; }
+    34%  { background-position: 44% 72%; }
+    55%  { background-position: 82% 56%; }
+    78%  { background-position: 36% 25%; }
+    100% { background-position: 58% 64%; }
+  }
+
+  @keyframes workTopoScaleA {
+    0%   { background-size: 680px 430px; }
+    24%  { background-size: 800px 506px; }
+    52%  { background-size: 720px 456px; }
+    76%  { background-size: 860px 545px; }
+    100% { background-size: 700px 444px; }
+  }
+
+  @keyframes workTopoDriftB {
+    0%   { background-position: 78% 58%; }
+    18%  { background-position: 35% 31%; }
+    38%  { background-position: 62% 77%; }
+    58%  { background-position: 21% 52%; }
+    80%  { background-position: 71% 28%; }
+    100% { background-position: 48% 66%; }
+  }
+
+  @keyframes workTopoScaleB {
+    0%   { background-size: 760px 480px; }
+    22%  { background-size: 900px 570px; }
+    48%  { background-size: 720px 456px; }
+    72%  { background-size: 940px 596px; }
+    100% { background-size: 790px 500px; }
+  }
+
+  .work-marquee {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  }
+
+  .work-track {
+    display: flex;
+    align-items: flex-start;
+    gap: clamp(18px, 2.2vw, 34px);
+    width: max-content;
+    animation: workScroll 36s linear infinite;
+    will-change: transform;
+  }
+
+  .work-marquee:hover .work-track {
+    animation-play-state: paused;
+  }
+
+  .work-card {
+    width: clamp(230px, 26vw, 390px);
+    flex: 0 0 auto;
+    color: var(--white);
+    text-decoration: none;
+  }
+
+  .work-card-media {
+    position: relative;
+    aspect-ratio: 1 / 1.05;
+    overflow: hidden;
+    border-radius: clamp(16px, 1.75vw, 26px);
+    background: rgba(255, 255, 255, 0.04);
+    isolation: isolate;
+  }
+
+  .work-card-media img {
+    width: 100%;
+    height: 100%;
     display: block;
+    object-fit: cover;
+    filter: saturate(1) contrast(1.02);
+    transform: scale(1.001);
+    transition: transform 360ms ease, filter 360ms ease;
+  }
+
+  .work-card:hover .work-card-media img,
+  .work-card:focus-visible .work-card-media img {
+    transform: scale(1.04);
+    filter: saturate(1.08) contrast(1.06);
+  }
+
+  .work-caption {
+    display: grid;
+    gap: 5px;
+    margin-top: 16px;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 240ms ease, transform 240ms ease;
+  }
+
+  .work-card:hover .work-caption,
+  .work-card:focus-visible .work-caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .work-project {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: clamp(16px, 1.2vw, 22px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .work-type {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .work-card:focus-visible {
+    outline: 2px solid var(--yellow);
+    outline-offset: 5px;
+  }
+
+  @keyframes workScroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - clamp(9px, 1.1vw, 17px))); }
+  }
+
+  @media (max-width: 760px) {
+    .work {
+      padding-top: 68px;
+      padding-bottom: 84px;
+    }
+
+    .work-intro {
+      width: min(100% - 36px, var(--page-max));
+      margin-bottom: 32px;
+    }
+
+    .work-title-shell {
+      padding: 14px 12px;
+    }
+
+    .work-title {
+      font-size: clamp(70px, 22vw, 112px);
+      white-space: normal;
+      line-height: 0.86;
+      -webkit-text-stroke: 0;
+    }
+
+    .work-card {
+      width: min(76vw, 320px);
+    }
+
+    .work-caption {
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 12px;
+    }
+
+    .work-track {
+      animation-duration: 30s;
+    }
   }
 
   /* ==========================================================
-     FOOTER
+     FOOTER — full image + nav/copyright
      ========================================================== */
   .footer {
-    margin-top: var(--section-gap);
-    padding-bottom: 48px;
-    text-align: center;
-  }
-  .footer-divider {
-    height: 1px;
-    background: var(--divider);
-    margin-bottom: 34px;
-  }
-  .footer-logo { height: 34px; margin-bottom: 22px; }
-  .footer-msg {
-    font-family: var(--font-display);
-    text-transform: uppercase;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 1.5;
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: clamp(-320px, -20vw, -180px);
+    padding: 0;
+    background: #000;
     color: var(--white);
-    margin: 0 0 14px;
+    overflow: hidden;
   }
-  .footer-copy {
+
+  .footer::before,
+  .footer::after {
+    content: none;
+  }
+
+  .footer-divider,
+  .footer-logo,
+  .footer-msg,
+  .footer-talk,
+  .footer-socials {
+    display: none !important;
+  }
+
+  .footer-image-wrap {
+    position: relative;
+    width: 100%;
+    height: clamp(640px, 74vw, 1040px);
+    overflow: hidden;
+    }
+
+  .footer-image-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.62) 0%,
+        rgba(0, 0, 0, 0.22) 36%,
+        rgba(0, 0, 0, 0.78) 100%
+      );
+    pointer-events: none;
+  }
+
+  .footer-bg-image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.58;
+  }
+
+  .footer-inner {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: clamp(28px, 4vw, 52px);
+    transform: translateX(-50%);
+    width: min(100% - 56px, 1040px);
+    margin: 0 auto;
+    display: grid;
+    gap: clamp(18px, 2vw, 28px);
+    justify-items: start;
+  }
+
+  .footer-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: clamp(18px, 3vw, 42px);
+    flex-wrap: wrap;
+  }
+
+  .footer-nav a,
+  .footer-nav button {
     font-family: var(--font-body);
     font-size: 12px;
-    color: var(--faint);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.90);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: color 180ms ease;
+  }
+
+  .footer-nav a:hover,
+  .footer-nav button:hover,
+  .footer-nav a:focus-visible,
+  .footer-nav button:focus-visible {
+    color: var(--yellow);
+    outline: none;
+  }
+
+  .footer-copy {
+    position: relative;
+    z-index: 2;
+    width: auto;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.76);
     margin: 0;
+    text-align: left;
+    text-shadow: 0 8px 22px rgba(0, 0, 0, 0.58);
+  }
+
+  @media (max-width: 700px) {
+    .footer-image-wrap {
+      height: 600px;
+    }
+
+    .footer-bg-image {
+      object-position: center top;
+      opacity: 0.56;
+    }
+
+    .footer-inner {
+      width: min(100% - 36px, var(--page-max));
+      bottom: 30px;
+      gap: 16px;
+    }
+
+    .footer-nav {
+      gap: 16px 22px;
+    }
   }
 
   /* ==========================================================
@@ -1391,6 +1840,357 @@
     }
   }
 
+
+  /* Final hero typography/CTA polish */
+  .web-word,
+  .graphic-word,
+  .creative-word,
+  .studio-word {
+    letter-spacing: 0.018em !important;
+  }
+
+  .amp-word {
+    letter-spacing: 0 !important;
+  }
+
+  .hero-actions a,
+  .hero-actions button,
+  .hero-cta-primary,
+  .hero-cta-secondary,
+  .cta-primary,
+  .cta-secondary {
+    text-transform: uppercase !important;
+    letter-spacing: 0.045em !important;
+  }
+
+
+  /* Final clients scale polish */
+  .clients,
+  .clients-strip,
+  .clients-marquee {
+    transform: scale(1.08);
+    transform-origin: center;
+  }
+
+  .clients img,
+  .clients-logo,
+  .client-logo,
+  .clients-track img {
+    max-height: clamp(42px, 5.4vw, 76px) !important;
+    height: auto;
+  }
+
+  .clients-track {
+    gap: clamp(34px, 5vw, 70px) !important;
+  }
+
+
+  /* Final section reveal animation polish */
+  .services .services-title-wrap,
+  .services .service-link,
+  .work .work-intro,
+  .work .work-card,
+  .lets-talk-section .lets-talk-title,
+  .lets-talk-section .lets-talk-icons {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(8px);
+    transition:
+      opacity 620ms ease,
+      transform 760ms cubic-bezier(0.16, 0.84, 0.44, 1),
+      filter 760ms ease;
+  }
+
+  .services.is-visible .services-title-wrap,
+  .services.is-visible .service-link,
+  .work.is-visible .work-intro,
+  .work.is-visible .work-card,
+  .lets-talk-section.is-visible .lets-talk-title,
+  .lets-talk-section.is-visible .lets-talk-icons {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .services.is-visible .services-title-wrap { transition-delay: 0ms; }
+  .services.is-visible .service-link:nth-child(1) { transition-delay: 100ms; }
+  .services.is-visible .service-link:nth-child(2) { transition-delay: 145ms; }
+  .services.is-visible .service-link:nth-child(3) { transition-delay: 190ms; }
+  .services.is-visible .service-link:nth-child(4) { transition-delay: 235ms; }
+  .services.is-visible .service-link:nth-child(5) { transition-delay: 280ms; }
+  .services.is-visible .service-link:nth-child(6) { transition-delay: 325ms; }
+  .services.is-visible .service-link:nth-child(7) { transition-delay: 370ms; }
+
+  .work.is-visible .work-intro { transition-delay: 0ms; }
+  .work.is-visible .work-card:nth-child(1) { transition-delay: 120ms; }
+  .work.is-visible .work-card:nth-child(2) { transition-delay: 170ms; }
+  .work.is-visible .work-card:nth-child(3) { transition-delay: 220ms; }
+  .work.is-visible .work-card:nth-child(4) { transition-delay: 270ms; }
+  .work.is-visible .work-card:nth-child(5) { transition-delay: 320ms; }
+
+  .lets-talk-section.is-visible .lets-talk-title { transition-delay: 0ms; }
+  .lets-talk-section.is-visible .lets-talk-icons { transition-delay: 140ms; }
+
+  .work.is-visible .work-track {
+    animation-play-state: running;
+  }
+
+  .work:not(.is-visible) .work-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services .services-title-wrap,
+    .services .service-link,
+    .work .work-intro,
+    .work .work-card,
+    .lets-talk-section .lets-talk-title,
+    .lets-talk-section .lets-talk-icons {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+
+
+  /* Final navbar polish */
+  .site-header,
+  header.site-header,
+  .navbar,
+  .nav-bar {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .site-header::before,
+  .site-header::after,
+  header.site-header::before,
+  header.site-header::after {
+    content: none !important;
+  }
+
+  .site-logo,
+  .brand img,
+  .logo img {
+    height: clamp(42px, 4.2vw, 68px) !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .nav-links,
+  .desktop-nav,
+  .site-nav,
+  nav[aria-label="Primary navigation"] {
+    display: flex;
+    align-items: center;
+    gap: 8px !important;
+    padding: 8px !important;
+    border-radius: 999px !important;
+    background: rgba(0, 0, 0, 0.34) !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+  }
+
+  .nav-links a,
+  .desktop-nav a,
+  .site-nav a,
+  nav[aria-label="Primary navigation"] a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 34px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    font-family: var(--font-body) !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-decoration: none !important;
+    transition:
+      color 180ms ease,
+      background 180ms ease,
+      transform 180ms ease !important;
+  }
+
+  .nav-links a:hover,
+  .desktop-nav a:hover,
+  .site-nav a:hover,
+  nav[aria-label="Primary navigation"] a:hover {
+    color: var(--yellow) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 760px) {
+    .site-logo,
+    .brand img,
+    .logo img {
+      height: 46px !important;
+    }
+
+    .nav-links,
+    .desktop-nav,
+    .site-nav,
+    nav[aria-label="Primary navigation"] {
+      padding: 7px !important;
+      gap: 6px !important;
+    }
+
+    .nav-links a,
+    .desktop-nav a,
+    .site-nav a,
+    nav[aria-label="Primary navigation"] a {
+      min-height: 32px !important;
+      padding: 0 11px !important;
+      font-size: 11px !important;
+    }
+  }
+
+
+  /* Final logo size adjustment */
+  .site-logo,
+  .brand img,
+  .logo img {
+    height: clamp(30px, 2.7vw, 44px) !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  @media (max-width: 760px) {
+    .site-logo,
+    .brand img,
+    .logo img {
+      height: 34px !important;
+    }
+  }
+
+
+  /* Final navbar contact font fix */
+  .nav-links button,
+  .desktop-nav button,
+  .site-nav button,
+  nav[aria-label="Primary navigation"] button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 34px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    font-family: var(--font-body) !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-decoration: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    transition:
+      color 180ms ease,
+      background 180ms ease,
+      transform 180ms ease !important;
+  }
+
+  .nav-links button:hover,
+  .desktop-nav button:hover,
+  .site-nav button:hover,
+  nav[aria-label="Primary navigation"] button:hover {
+    color: var(--yellow) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 760px) {
+    .nav-links button,
+    .desktop-nav button,
+    .site-nav button,
+    nav[aria-label="Primary navigation"] button {
+      min-height: 32px !important;
+      padding: 0 11px !important;
+      font-size: 11px !important;
+    }
+  }
+
+
+  /* Final repeat-on-scroll animation behavior */
+  .reveal:not(.is-visible),
+  .services:not(.is-visible) .services-title-wrap,
+  .services:not(.is-visible) .service-link,
+  .work:not(.is-visible) .work-intro,
+  .work:not(.is-visible) .work-card,
+  .lets-talk-section:not(.is-visible) .lets-talk-title,
+  .lets-talk-section:not(.is-visible) .lets-talk-icons {
+    opacity: 0;
+    transform: translateY(34px);
+    filter: blur(8px);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .reveal,
+  .services .services-title-wrap,
+  .services .service-link,
+  .work .work-intro,
+  .work .work-card,
+  .lets-talk-section .lets-talk-title,
+  .lets-talk-section .lets-talk-icons {
+    transition:
+      opacity 620ms ease,
+      transform 760ms cubic-bezier(0.16, 0.84, 0.44, 1),
+      filter 760ms ease;
+  }
+
+  .services.is-visible .services-title-wrap,
+  .services.is-visible .service-link,
+  .work.is-visible .work-intro,
+  .work.is-visible .work-card,
+  .lets-talk-section.is-visible .lets-talk-title,
+  .lets-talk-section.is-visible .lets-talk-icons {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+
+  .services.is-visible .service-link:nth-child(1) { transition-delay: 80ms; }
+  .services.is-visible .service-link:nth-child(2) { transition-delay: 120ms; }
+  .services.is-visible .service-link:nth-child(3) { transition-delay: 160ms; }
+  .services.is-visible .service-link:nth-child(4) { transition-delay: 200ms; }
+  .services.is-visible .service-link:nth-child(5) { transition-delay: 240ms; }
+  .services.is-visible .service-link:nth-child(6) { transition-delay: 280ms; }
+  .services.is-visible .service-link:nth-child(7) { transition-delay: 320ms; }
+
+  .work.is-visible .work-card:nth-child(1) { transition-delay: 90ms; }
+  .work.is-visible .work-card:nth-child(2) { transition-delay: 130ms; }
+  .work.is-visible .work-card:nth-child(3) { transition-delay: 170ms; }
+  .work.is-visible .work-card:nth-child(4) { transition-delay: 210ms; }
+  .work.is-visible .work-card:nth-child(5) { transition-delay: 250ms; }
+
+  .lets-talk-section.is-visible .lets-talk-icons { transition-delay: 140ms; }
+
+  .work:not(.is-visible) .work-track {
+    animation-play-state: paused;
+  }
+
+  .work.is-visible .work-track {
+    animation-play-state: running;
+  }
+
 </style>
 </head>
 <body>
@@ -1398,7 +2198,7 @@
 <!-- ============ SITE HEADER ============ -->
 <header class="site-header">
   <a href="#hero" class="site-logo-link" aria-label="Wissam Designs — home">
-    <img class="site-logo" src="https://www.wissamdesigns.com/assets/Logo.png" alt="Wissam Designs" />
+    <img class="site-logo" src="https://github.com/wissammantoufeh-jpg/wissam-portfolio/blob/main/assets/Logonew.png?raw=true" alt="Wissam Designs" />
   </a>
   <nav class="site-nav" aria-label="Primary">
     <a href="#about" class="nav-link">ABOUT</a>
@@ -1435,8 +2235,8 @@
       </div>
 
       <div class="hero-actions">
-        <button class="hero-primary-btn js-open-contact" type="button">Let's Talk</button>
-        <a class="hero-secondary-btn" href="#work">See Our Work</a>
+        <button class="hero-primary-btn js-open-contact" type="button">LET'S TALK</button>
+        <a class="hero-secondary-btn" href="#work">SEE OUR WORK</a>
       </div>
     </div>
   </div>
@@ -1524,41 +2324,165 @@
       </div>
     </div>
   </section>
-
-
 <!-- ============ RECENT WORK ============ -->
   <section class="work reveal" id="work">
-    <div class="section-heading-row">
-      <h2 class="section-title">RECENT <span class="accent">WORK</span></h2>
-      <a class="view-more" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer">View More &gt;</a>
+    <div class="work-showcase">
+      <div class="work-intro">
+        <div class="work-title-shell">
+          <h2 class="work-title" aria-label="Recent Work">
+            <span class="work-title-word" data-text="Recent">Recent</span> <span class="work-title-word" data-text="Work">Work</span>
+          </h2>
+          <p class="work-title-caption">SELECTION OF MY WORK</p>
+        </div>
+      </div>
+
+      <div class="work-marquee" aria-label="Recent work projects">
+        <div class="work-track">
+        <a class="work-card" href="https://www.instagram.com/reel/DK-WJ_6IP_X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Tourism Promo project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/01.png" alt="Tourism Promo project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Tourism Promo</p>
+            <p class="work-type">Social Content</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DWy7bn8ozua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Hospitality Reel project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/02.png" alt="Hospitality Reel project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Hospitality Reel</p>
+            <p class="work-type">Video Campaign</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DXHnqw3I1wF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Logistics Awareness project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/03.png" alt="Logistics Awareness project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Logistics Awareness</p>
+            <p class="work-type">Motion Graphic</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DKr-jexoDOD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open SARA Group Showcase project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/04.png" alt="SARA Group Showcase project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">SARA Group Showcase</p>
+            <p class="work-type">Brand Presentation</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer" aria-label="Open Brand Visuals project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/BG%20WORK.jpg" alt="Brand Visuals project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Brand Visuals</p>
+            <p class="work-type">Design Direction</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DK-WJ_6IP_X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Tourism Promo project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/01.png" alt="Tourism Promo project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Tourism Promo</p>
+            <p class="work-type">Social Content</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DWy7bn8ozua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Hospitality Reel project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/02.png" alt="Hospitality Reel project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Hospitality Reel</p>
+            <p class="work-type">Video Campaign</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DXHnqw3I1wF/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open Logistics Awareness project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/03.png" alt="Logistics Awareness project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Logistics Awareness</p>
+            <p class="work-type">Motion Graphic</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/reel/DKr-jexoDOD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Open SARA Group Showcase project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/04.png" alt="SARA Group Showcase project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">SARA Group Showcase</p>
+            <p class="work-type">Brand Presentation</p>
+          </div>
+        </a>
+
+        <a class="work-card" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer" aria-label="Open Brand Visuals project">
+          <div class="work-card-media">
+            <img src="https://www.wissamdesigns.com/assets/BG%20WORK.jpg" alt="Brand Visuals project thumbnail" />
+          </div>
+          <div class="work-caption">
+            <p class="work-project">Brand Visuals</p>
+            <p class="work-type">Design Direction</p>
+          </div>
+        </a>
+        </div>
+      </div>
     </div>
-    <div class="work-grid">
-      <a class="work-tile" href="https://www.instagram.com/reel/DK-WJ_6IP_X/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 1">
-        <img src="https://www.wissamdesigns.com/assets/01.png" alt="Instagram work thumbnail 1" />
+  </section>
+
+  <!-- ============ LETS TALK ============ -->
+  <section class="lets-talk-section reveal" id="lets-talk">
+    <button class="lets-talk-title" type="button" data-open-contact aria-label="Open contact form">
+      <span class="lets-talk-word">LET'S</span>
+      <span class="lets-talk-word">TALK</span>
+    </button>
+
+    <div class="lets-talk-icons" aria-label="Contact links">
+      <a class="lets-talk-icon" href="mailto:wissam@wissamdesigns.com" aria-label="Email Wissam Designs">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 21.5C7.2 21.5 3.8 18.25 3.8 13.4V10.6C3.8 5.75 7.25 2.5 12 2.5C16.8 2.5 20.2 5.75 20.2 10.6V12.1C20.2 14.65 18.95 16.2 16.95 16.2C15.75 16.2 14.85 15.7 14.4 14.85C13.8 15.7 12.9 16.2 11.75 16.2C9.7 16.2 8.25 14.55 8.25 12.05C8.25 9.55 9.72 7.9 11.78 7.9C12.78 7.9 13.55 8.28 14.1 8.98V8.1H15.85V12.85C15.85 14.08 16.25 14.55 17.05 14.55C18.02 14.55 18.55 13.68 18.55 12.08V10.58C18.55 6.68 15.92 4.05 12 4.05C8.1 4.05 5.45 6.68 5.45 10.58V13.42C5.45 17.32 8.08 19.95 12 19.95C13.35 19.95 14.72 19.62 15.78 19.05L16.35 20.45C15.15 21.1 13.55 21.5 12 21.5ZM12.05 14.48C13.25 14.48 14.08 13.52 14.08 12.05C14.08 10.58 13.25 9.62 12.05 9.62C10.82 9.62 10.02 10.58 10.02 12.05C10.02 13.52 10.82 14.48 12.05 14.48Z" fill="currentColor"/>
+        </svg>
       </a>
-      <a class="work-tile" href="https://www.instagram.com/reel/DWy7bn8ozua/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 2">
-        <img src="https://www.wissamdesigns.com/assets/02.png" alt="Instagram work thumbnail 2" />
-      </a>
-<a class="work-tile" href="https://www.instagram.com/reel/DKr-jexoDOD/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" rel="noopener noreferrer" aria-label="Instagram Reel 4">
-        <img src="https://www.wissamdesigns.com/assets/04.png" alt="Instagram work thumbnail 4" />
+
+      <a class="lets-talk-icon" href="https://www.instagram.com/wissamdesigns/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7.75 2.8H16.25C19.05 2.8 21.2 4.95 21.2 7.75V16.25C21.2 19.05 19.05 21.2 16.25 21.2H7.75C4.95 21.2 2.8 19.05 2.8 16.25V7.75C2.8 4.95 4.95 2.8 7.75 2.8ZM16.25 19.45C18.08 19.45 19.45 18.08 19.45 16.25V7.75C19.45 5.92 18.08 4.55 16.25 4.55H7.75C5.92 4.55 4.55 5.92 4.55 7.75V16.25C4.55 18.08 5.92 19.45 7.75 19.45H16.25ZM12 7.45C14.5 7.45 16.55 9.5 16.55 12C16.55 14.5 14.5 16.55 12 16.55C9.5 16.55 7.45 14.5 7.45 12C7.45 9.5 9.5 7.45 12 7.45ZM12 14.8C13.55 14.8 14.8 13.55 14.8 12C14.8 10.45 13.55 9.2 12 9.2C10.45 9.2 9.2 10.45 9.2 12C9.2 13.55 10.45 14.8 12 14.8ZM17.05 6.65C17.68 6.65 18.18 7.15 18.18 7.78C18.18 8.4 17.68 8.9 17.05 8.9C16.42 8.9 15.92 8.4 15.92 7.78C15.92 7.15 16.42 6.65 17.05 6.65Z" fill="currentColor"/>
+        </svg>
       </a>
     </div>
   </section>
 
   <!-- ============ FOOTER ============ -->
-  <section class="footer reveal">
-    <div class="footer-divider"></div>
-    <img class="footer-logo" src="https://www.wissamdesigns.com/assets/Logo.png" alt="Wissam Designs logo" />
-    <p class="footer-msg">
-      THIS WEBSITE IS STILL GETTING DRESSED UP.<br/>
-      MORE <span class="accent">MAGIC IS COMING SOON.</span>
-    </p>
-    <p class="footer-copy">© 2026 | WISSAMDESIGNS.COM</p>
-  </section>
+  <footer class="footer reveal" id="footer">
+    <div class="footer-image-wrap" aria-hidden="true">
+      <img class="footer-bg-image" src="https://github.com/wissammantoufeh-jpg/wissam-portfolio/blob/main/assets/Footer.jpg?raw=true" alt="" />
+    </div>
 
-</main>
+    <div class="footer-inner">
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <button type="button" data-open-contact>Contact</button>
+      </nav>
 
-<!-- ============ CONTACT FORM SHEET ============ -->
+      <p class="footer-copy">© 2026 | WISSAMDESIGNS.COM</p>
+    </div>
+  </footer>
+
+  <!-- ============ CONTACT FORM SHEET ============ -->
 <section class="contact-sheet" id="contactSheet" aria-hidden="true">
   <form
     class="contact-form"
@@ -2379,6 +3303,39 @@
 
       aboutObserver.observe(about);
     }
+  })();
+</script>
+
+
+
+<script>
+  // Repeat reveal animations when sections enter the screen from either direction
+  (() => {
+    const targets = document.querySelectorAll(
+      ".reveal, .services, .work, .lets-talk-section"
+    );
+
+    if (!targets.length) return;
+
+    if (!("IntersectionObserver" in window)) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        } else {
+          entry.target.classList.remove("is-visible");
+        }
+      });
+    }, {
+      threshold: 0.16,
+      rootMargin: "0px 0px -8% 0px"
+    });
+
+    targets.forEach((el) => observer.observe(el));
   })();
 </script>
 
