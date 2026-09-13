@@ -279,199 +279,264 @@
   }
 
   /* ==========================================================
-     HERO ICON EASTER EGG — a few thin-outline design icons drift
-     quietly in the open space; hovering one pops it with a small
-     yellow spark and ticks the corner counter. Desktop only.
+     HERO MINI CHALLENGE — Catch the Creative Sparks
      ========================================================== */
   .hero-icons {
     position: absolute;
     inset: 0;
-    z-index: 4;
+    z-index: 5;
     pointer-events: none;
     overflow: hidden;
   }
+
+  .spark-game-card {
+    position: absolute;
+    top: clamp(88px, 10vh, 118px);
+    left: clamp(18px, 3vw, 42px);
+    z-index: 8;
+    width: min(260px, 32vw);
+    padding: 18px 18px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(244, 192, 38, 0.34);
+    background:
+      radial-gradient(circle at 18% 8%, rgba(244, 192, 38, 0.14), transparent 38%),
+      rgba(0, 0, 0, 0.46);
+    box-shadow: 0 0 30px rgba(244, 192, 38, 0.10);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--white);
+    animation: sparkInvitePulse 2.6s ease-in-out infinite;
+  }
+
+  .spark-game-card.is-playing,
+  .spark-game-card.is-complete {
+    animation: none;
+  }
+
+  @keyframes sparkInvitePulse {
+    0%, 100% {
+      box-shadow: 0 0 22px rgba(244, 192, 38, 0.08);
+      border-color: rgba(244, 192, 38, 0.26);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(244, 192, 38, 0.18);
+      border-color: rgba(244, 192, 38, 0.48);
+    }
+  }
+
+  .spark-game-kicker {
+    margin-bottom: 10px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .spark-game-title {
+    margin: 0 0 10px;
+    font-family: var(--font-body);
+    font-size: clamp(20px, 1.7vw, 28px);
+    font-weight: 950;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .spark-game-copy {
+    margin: 0 0 15px;
+    max-width: 210px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .spark-game-progress {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin: 0 0 15px;
+  }
+
+  .spark-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(244, 192, 38, 0.46);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .spark-dot.is-filled {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    box-shadow: 0 0 16px rgba(244, 192, 38, 0.30);
+  }
+
+  .spark-game-button {
+    width: 100%;
+    min-height: 39px;
+    border: 0;
+    border-radius: 999px;
+    background: var(--yellow);
+    color: #000;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 950;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease;
+  }
+
+  .spark-game-button:hover,
+  .spark-game-button:focus-visible {
+    transform: translateY(-2px);
+    box-shadow: 0 0 26px rgba(244, 192, 38, 0.26);
+    outline: none;
+  }
+
+  .spark-game-button:disabled {
+    cursor: wait;
+    opacity: 0.62;
+    transform: none;
+  }
+
+  .spark-game-reward {
+    margin: 12px 0 0;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.58);
+  }
+
   .hero-icon {
     position: absolute;
-    width: 56px;
-    height: 56px;
-    color: rgba(244, 192, 38, 0.42);
-    opacity: 0.62;
+    width: 58px;
+    height: 58px;
+    color: rgba(244, 192, 38, 0.72);
+    opacity: 0;
     pointer-events: auto;
     cursor: crosshair;
-    transform: translate(-50%, -50%);
-    filter: drop-shadow(0 0 6px rgba(244, 192, 38, 0.10));
-    transition: color 220ms ease, opacity 420ms ease, filter 220ms ease, transform 220ms ease;
-    animation: heroIconFloat var(--float-dur, 9s) ease-in-out infinite;
-    animation-delay: var(--float-delay, 0s);
+    transform: translate(-50%, -50%) scale(0.72);
+    filter: drop-shadow(0 0 14px rgba(244, 192, 38, 0.20));
     background: transparent;
     border: 0;
     padding: 8px;
+    animation: heroSparkAppear 260ms ease-out forwards, heroSparkBreathe 1.1s ease-in-out infinite alternate;
   }
+
   .hero-icon svg {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     display: block;
   }
+
   .hero-icon:hover {
-    color: rgba(244, 192, 38, 0.88);
-    opacity: 0.95;
-    filter: drop-shadow(0 0 13px rgba(244, 192, 38, 0.32));
+    color: rgba(244, 192, 38, 0.96);
+    filter: drop-shadow(0 0 22px rgba(244, 192, 38, 0.48));
   }
-  .hero-icon.is-hit {
-    animation: none;
-    transition: transform 520ms ease, opacity 520ms ease, filter 520ms ease;
-    transform: translate(-50%, -50%) scale(1.35);
-    opacity: 0;
-    color: var(--yellow);
-    filter: drop-shadow(0 0 14px rgba(244, 192, 38, 0.32));
+
+  .hero-icon.is-fading {
+    animation: heroSparkFade 360ms ease forwards;
     pointer-events: none;
   }
-  @keyframes heroIconFloat {
-    0%, 100% { transform: translate(-50%, -50%) translateY(0) rotate(0deg); }
-    50% { transform: translate(-50%, -50%) translateY(-10px) rotate(4deg); }
+
+  .hero-icon.is-hit {
+    animation: heroSparkHit 520ms ease forwards;
+    pointer-events: none;
+    color: var(--yellow);
+  }
+
+  @keyframes heroSparkAppear {
+    to { opacity: 0.82; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  @keyframes heroSparkBreathe {
+    from { filter: drop-shadow(0 0 10px rgba(244, 192, 38, 0.20)); }
+    to { filter: drop-shadow(0 0 20px rgba(244, 192, 38, 0.45)); }
+  }
+
+  @keyframes heroSparkFade {
+    to { opacity: 0; transform: translate(-50%, -50%) scale(0.78); }
+  }
+
+  @keyframes heroSparkHit {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.55); }
+  }
+
+  .hero-spark,
+  .hero-plus-one {
+    position: absolute;
+    pointer-events: none;
+    z-index: 6;
   }
 
   .hero-spark {
-    position: absolute;
-    width: 9px;
-    height: 9px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(244,192,38,0.75) 0%, rgba(244,192,38,0.24) 45%, rgba(244,192,38,0) 72%);
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 1;
-    pointer-events: none;
-    z-index: 0;
-    animation: heroSparkPop 420ms ease-out forwards;
+    background: radial-gradient(circle, rgba(244,192,38,1) 0%, rgba(244,192,38,0.42) 42%, rgba(244,192,38,0) 76%);
+    transform: translate(-50%, -50%) scale(0.35);
+    animation: heroSparkPop 560ms ease-out forwards;
   }
+
   .hero-spark::before,
   .hero-spark::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 2px;
-    height: 13px;
-    background: rgba(244, 192, 38, 0.55);
+    width: 3px;
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(244, 192, 38, 0.72);
     transform: translate(-50%, -50%) rotate(0deg) scaleY(0.2);
-    animation: heroSparkRay 420ms ease-out forwards;
+    animation: heroSparkRay 560ms ease-out forwards;
   }
+
   .hero-spark::after {
     transform: translate(-50%, -50%) rotate(90deg) scaleY(0.2);
   }
-  @keyframes heroSparkPop {
-    0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
-    60% { transform: translate(-50%, -50%) scale(1.8); opacity: 0.75; }
-    100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+
+  .hero-plus-one {
+    font-family: var(--font-body);
+    font-size: 38px;
+    font-weight: 950;
+    color: var(--yellow);
+    text-shadow: 0 0 22px rgba(244, 192, 38, 0.55);
+    transform: translate(-50%, -50%);
+    animation: plusOneRise 760ms ease-out forwards;
   }
+
+  @keyframes heroSparkPop {
+    0% { transform: translate(-50%, -50%) scale(0.35); opacity: 1; }
+    70% { transform: translate(-50%, -50%) scale(2.2); opacity: 0.76; }
+    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+  }
+
   @keyframes heroSparkRay {
     0% { opacity: 0.9; }
     100% { opacity: 0; }
   }
 
-  .hero-score {
-    position: absolute;
-    top: clamp(78px, 9vh, 104px);
-    left: clamp(20px, 3vw, 42px);
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    line-height: 1;
-    letter-spacing: 0.04em;
-    color: var(--yellow);
-    opacity: 0.95;
-    pointer-events: none;
-    user-select: none;
-    text-transform: uppercase;
-  }
-
-  .hero-score-label {
-    color: rgba(244, 192, 38, 0.66);
-    font-weight: 700;
-  }
-
-  .hero-score-value {
-    min-width: 30px;
-    color: #000000;
-    background: rgba(244, 192, 38, 0.92);
-    border-radius: 999px;
-    padding: 6px 10px;
-    font-weight: 800;
-    text-align: center;
-    box-shadow: 0 0 14px rgba(244, 192, 38, 0.14);
-  }
-
-  .hero-game-hint {
-    position: absolute;
-    top: clamp(112px, 13vh, 144px);
-    left: clamp(20px, 3vw, 42px);
-    z-index: 6;
-    max-width: 260px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    line-height: 1.45;
-    color: rgba(255, 255, 255, 0.72);
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .hero-game-hint strong {
-    color: var(--yellow);
-    font-weight: 700;
+  @keyframes plusOneRise {
+    0% { opacity: 0; transform: translate(-50%, -30%) scale(0.84); }
+    22% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -145%) scale(1.08); }
   }
 
   @media (max-width: 700px) {
     .hero-icons,
-    .hero-score,
-    .hero-game-hint {
+    .spark-game-card {
       display: none;
     }
-  }
-  #hero {
-    --mx: 0;
-    --my: 0;
-  }
-  .hero-title-outer {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding: 0 4vw;
-  }
-  .hero-inner {
-    position: relative;
-    z-index: 1;
-    max-width: var(--hero-max);
-    margin: 0 auto;
-    padding: 0 var(--side-pad);
-    width: 100%;
-    text-align: center;
-  }
-  .hero-video-wrap {
-    display: none;
-  }
-
-  .hero-video-wrap {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    height: auto;
-    border-radius: 8px;
-    overflow: hidden;
-    opacity: 0;
-    transform: scale(1.04);
-    animation: heroVideoIn 900ms ease forwards;
-    animation-delay: 640ms;
-  }
-  .hero-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  @media (min-width: 860px) {
-    .hero-video-wrap { max-width: 260px; }
   }
 
   /* ---------------- HERO TITLE — Web & Graphic / Creative Studio ---------------- */
@@ -2191,6 +2256,291 @@ margin-bottom: 0;
     animation-play-state: running;
   }
 
+
+  /* Safe section spacing tightening */
+  .services {
+    margin-bottom: clamp(46px, 6vh, 80px) !important;
+  }
+
+  .work {
+    margin-top: clamp(52px, 7vh, 88px) !important;
+    padding-top: clamp(46px, 6vw, 76px) !important;
+    padding-bottom: clamp(42px, 5vw, 70px) !important;
+  }
+
+  .work-intro {
+    margin-bottom: clamp(22px, 3vw, 38px) !important;
+  }
+
+  .lets-talk-section {
+    margin-top: clamp(52px, 7vh, 86px) !important;
+    margin-bottom: 0 !important;
+  }
+
+  @media (max-width: 760px) {
+    .services {
+      margin-bottom: 52px !important;
+    }
+
+    .work {
+      margin-top: 54px !important;
+      padding-top: 48px !important;
+      padding-bottom: 52px !important;
+    }
+
+    .lets-talk-section {
+      margin-top: 54px !important;
+      margin-bottom: 0 !important;
+    }
+  }
+
+
+  /* Creative Sparks v2 — 8-spark mystery + endless mode */
+  .spark-game-card {
+    width: min(260px, 32vw);
+  }
+
+  .spark-game-card.is-minimized {
+    width: auto !important;
+    min-width: 0;
+    padding: 10px 13px !important;
+    border-radius: 999px !important;
+    display: inline-flex !important;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.42);
+  }
+
+  .spark-game-card.is-minimized .spark-game-kicker,
+  .spark-game-card.is-minimized .spark-game-copy,
+  .spark-game-card.is-minimized .spark-game-progress,
+  .spark-game-card.is-minimized .spark-game-button,
+  .spark-game-card.is-minimized .spark-game-reward {
+    display: none !important;
+  }
+
+  .spark-game-card.is-minimized .spark-game-title {
+    margin: 0 !important;
+    font-family: var(--font-body) !important;
+    font-size: 13px !important;
+    font-weight: 950 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em !important;
+    color: var(--yellow) !important;
+    white-space: nowrap !important;
+  }
+
+  .spark-game-card.is-reward {
+    max-width: 310px;
+  }
+
+  .spark-game-card.is-reward .spark-game-title {
+    color: var(--white);
+  }
+
+  .spark-game-card.is-reward .spark-game-copy {
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  .spark-game-card.is-reward .spark-game-copy strong {
+    color: var(--yellow);
+    font-size: 1.08em;
+  }
+
+  .spark-game-milestone {
+    position: absolute;
+    z-index: 9;
+    top: clamp(180px, 25vh, 260px);
+    left: clamp(18px, 3vw, 42px);
+    max-width: 280px;
+    padding: 11px 13px;
+    border-radius: 14px;
+    border: 1px solid rgba(244, 192, 38, 0.26);
+    background: rgba(0, 0, 0, 0.48);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.28;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .spark-game-milestone.is-visible {
+    animation: sparkMilestone 2.7s ease forwards;
+  }
+
+  @keyframes sparkMilestone {
+    0% { opacity: 0; transform: translateY(10px); }
+    16% { opacity: 1; transform: translateY(0); }
+    82% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-8px); }
+  }
+
+  .hero-icon {
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 700px) {
+    .spark-game-card {
+      display: grid !important;
+      top: 82px;
+      left: 16px;
+      width: min(245px, calc(100vw - 32px)) !important;
+      padding: 14px;
+    }
+
+    .spark-game-title {
+      font-size: 20px;
+    }
+
+    .hero-icons {
+      display: block !important;
+    }
+
+    .hero-icon {
+      width: 54px;
+      height: 54px;
+    }
+
+    .hero-icon svg {
+      width: 38px;
+      height: 38px;
+    }
+  }
+
+
+  /* Final Creative Sparks polish */
+  .spark-game-progress {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(8, 1fr) !important;
+    gap: 8px !important;
+    margin: 0 0 14px !important;
+  }
+
+  .spark-dot {
+    width: 15px !important;
+    height: 15px !important;
+    justify-self: center !important;
+    border-width: 1.5px !important;
+  }
+
+  .spark-game-reward:empty {
+    display: none !important;
+  }
+
+  .spark-game-button {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    box-shadow: 0 0 22px rgba(244, 192, 38, 0.20) !important;
+  }
+
+  .spark-game-button::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -40% -30%;
+    background: linear-gradient(
+      115deg,
+      transparent 0%,
+      transparent 36%,
+      rgba(255, 255, 255, 0.55) 48%,
+      rgba(255, 255, 255, 0.18) 56%,
+      transparent 68%,
+      transparent 100%
+    );
+    transform: translateX(-80%);
+    animation: challengeButtonSweep 2.1s ease-in-out infinite;
+  }
+
+  .spark-game-button::after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at center, rgba(244, 192, 38, 0.42), transparent 68%);
+    opacity: 0;
+    animation: challengeButtonGlow 1.8s ease-in-out infinite;
+  }
+
+  @keyframes challengeButtonSweep {
+    0% { transform: translateX(-95%); }
+    46% { transform: translateX(95%); }
+    100% { transform: translateX(95%); }
+  }
+
+  @keyframes challengeButtonGlow {
+    0%, 100% { opacity: 0.12; }
+    50% { opacity: 0.38; }
+  }
+
+  @media (max-width: 700px) {
+    .spark-dot {
+      width: 14px !important;
+      height: 14px !important;
+    }
+
+    .spark-game-progress {
+      gap: 7px !important;
+    }
+  }
+
+
+  /* Final spark density polish */
+  .hero-icon {
+    width: 50px !important;
+    height: 50px !important;
+    opacity: 0.68 !important;
+    filter: drop-shadow(0 0 10px rgba(244, 192, 38, 0.18)) !important;
+  }
+
+  .hero-icon svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .hero-icon:hover {
+    opacity: 0.95 !important;
+    filter: drop-shadow(0 0 18px rgba(244, 192, 38, 0.38)) !important;
+  }
+
+  .hero-icon.is-hit,
+  .hero-icon.is-fading {
+    opacity: 1 !important;
+  }
+
+
+  /* Final spark movement fix */
+  .hero-icon {
+    animation:
+      heroSparkAppear 260ms ease-out forwards,
+      heroSparkBreathe 1.1s ease-in-out infinite alternate,
+      heroSparkDrift 2.2s ease-in-out infinite alternate !important;
+  }
+
+  @keyframes heroSparkDrift {
+    from { margin-left: -5px; margin-top: -3px; }
+    to { margin-left: 5px; margin-top: 4px; }
+  }
+
+
+  /* Final collected-spark disappear fix */
+  .hero-icon.is-hit {
+    animation: heroSparkHit 520ms ease forwards !important;
+    pointer-events: none !important;
+  }
+
+  .hero-icon.is-fading {
+    animation: heroSparkFade 360ms ease forwards !important;
+    pointer-events: none !important;
+  }
+
 </style>
 </head>
 <body>
@@ -2213,13 +2563,25 @@ margin-bottom: 0;
   <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
   <canvas class="hero-trail-canvas" id="heroTrail" aria-hidden="true"></canvas>
   <div class="hero-icons" id="heroIcons" aria-hidden="true"></div>
-  <div class="hero-score" id="heroScore" aria-hidden="true">
-    <span class="hero-score-label">Your Score</span>
-    <span class="hero-score-value" id="heroScoreValue">0</span>
-  </div>
-  <div class="hero-game-hint" aria-hidden="true">
-    Catch the <strong>creative sparks</strong> before they fade.
-  </div>
+  <aside class="spark-game-card" id="sparkGameCard" aria-label="Catch the Creative Sparks mini challenge">
+    <div class="spark-game-kicker" id="sparkGameKicker">Mini challenge</div>
+    <div class="spark-game-title" id="sparkGameTitle">Catch 8<br>Creative Sparks.</div>
+    <p class="spark-game-copy" id="sparkGameCopy">Catch them before they disappear.</p>
+
+    <div class="spark-game-progress" id="sparkGameProgress" aria-label="Sparks caught">
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+      <span class="spark-dot"></span>
+    </div>
+
+    <button class="spark-game-button" id="sparkGameButton" type="button">Start Challenge</button>
+    <p class="spark-game-reward" id="sparkGameReward"></p>
+  </aside>
 
   <div class="hero-title-outer">
     <div class="hero-title hero-title-poster" id="heroTitle">
@@ -2903,17 +3265,28 @@ margin-bottom: 0;
     raf = requestAnimationFrame(loop);
   })();
 
-  // Hidden hero easter egg: creative sparks appear in fixed safe slots.
-  // Hover near them to score. Each one fades after 5 seconds.
+
+  // Creative Sparks mini challenge: catch 8 sparks, reveal a mystery joke, then optional endless mode.
   (function () {
     const hero = document.getElementById("hero");
     const container = document.getElementById("heroIcons");
-    const scoreEl = document.getElementById("heroScoreValue");
-    if (!hero || !container || !scoreEl) return;
+    const card = document.getElementById("sparkGameCard");
+    const kicker = document.getElementById("sparkGameKicker");
+    const title = document.getElementById("sparkGameTitle");
+    const copy = document.getElementById("sparkGameCopy");
+    const progress = document.getElementById("sparkGameProgress");
+    const button = document.getElementById("sparkGameButton");
+    const reward = document.getElementById("sparkGameReward");
 
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    const isDesktop = window.matchMedia("(min-width: 701px)").matches;
-    if (!canHover || !isDesktop) return;
+    if (!hero || !container || !card || !button || !progress || !reward || !title || !copy || !kicker) return;
+
+    const GOAL = 8;
+    const LIFE_MS = 5000;
+    const HIT_RADIUS = 62;
+    const SESSION_KEY = "wissamCreativeSparksUnlockedV2";
+    const SCORE_KEY = "wissamCreativeSparksScoreV2";
+    const COOLDOWN_MS = 10000;
+    const supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
     const ICONS = [
       '<path d="M4 3l6.5 16 2-6.5L19 10.5z"/>',
@@ -2927,138 +3300,579 @@ margin-bottom: 0;
       '<path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z"/>'
     ];
 
+    const JOKES = [
+      {
+            "q": "What do you call fake spaghetti?",
+            "a": "An impasta."
+      },
+      {
+            "q": "Why did the math book look sad?",
+            "a": "Because it had too many problems."
+      },
+      {
+            "q": "Why don’t eggs tell jokes?",
+            "a": "They’d crack each other up."
+      },
+      {
+            "q": "What do you call a bear with no teeth?",
+            "a": "A gummy bear."
+      },
+      {
+            "q": "Why did the bicycle fall over?",
+            "a": "Because it was two-tired."
+      },
+      {
+            "q": "What do you call cheese that isn’t yours?",
+            "a": "Nacho cheese."
+      },
+      {
+            "q": "Why did the scarecrow win an award?",
+            "a": "Because he was outstanding in his field."
+      },
+      {
+            "q": "What do you call a fish wearing a bowtie?",
+            "a": "Sofishticated."
+      },
+      {
+            "q": "Why can’t your nose be twelve inches long?",
+            "a": "Because then it would be a foot."
+      },
+      {
+            "q": "What do you call a factory that makes okay products?",
+            "a": "A satisfactory."
+      },
+      {
+            "q": "Why did the golfer bring two pairs of pants?",
+            "a": "In case he got a hole in one."
+      },
+      {
+            "q": "What did one wall say to the other?",
+            "a": "I’ll meet you at the corner."
+      },
+      {
+            "q": "Why don’t skeletons fight each other?",
+            "a": "They don’t have the guts."
+      },
+      {
+            "q": "What do you call a sleeping bull?",
+            "a": "A bulldozer."
+      },
+      {
+            "q": "Why did the tomato blush?",
+            "a": "Because it saw the salad dressing."
+      },
+      {
+            "q": "What do you call a pony with a sore throat?",
+            "a": "A little horse."
+      },
+      {
+            "q": "Why did the cookie go to the doctor?",
+            "a": "Because it felt crummy."
+      },
+      {
+            "q": "What do you call a snowman with a six-pack?",
+            "a": "An abdominal snowman."
+      },
+      {
+            "q": "Why did the banana go to the doctor?",
+            "a": "It wasn’t peeling well."
+      },
+      {
+            "q": "What did the janitor say when he jumped out of the closet?",
+            "a": "Supplies!"
+      },
+      {
+            "q": "Why was the broom late?",
+            "a": "It swept in."
+      },
+      {
+            "q": "What do you call a belt made of watches?",
+            "a": "A waist of time."
+      },
+      {
+            "q": "Why did the coffee file a police report?",
+            "a": "It got mugged."
+      },
+      {
+            "q": "What do you call a cow with no legs?",
+            "a": "Ground beef."
+      },
+      {
+            "q": "Why did the picture go to jail?",
+            "a": "Because it was framed."
+      },
+      {
+            "q": "What do you call a pile of cats?",
+            "a": "A meowtain."
+      },
+      {
+            "q": "Why did the orange stop rolling?",
+            "a": "It ran out of juice."
+      },
+      {
+            "q": "What’s brown and sticky?",
+            "a": "A stick."
+      },
+      {
+            "q": "Why did the melon jump into the lake?",
+            "a": "It wanted to be a watermelon."
+      },
+      {
+            "q": "What do you call a dinosaur with an extensive vocabulary?",
+            "a": "A thesaurus."
+      },
+      {
+            "q": "Why did the chicken go to the séance?",
+            "a": "To talk to the other side."
+      },
+      {
+            "q": "What kind of shoes do ninjas wear?",
+            "a": "Sneakers."
+      },
+      {
+            "q": "Why did the stadium get hot?",
+            "a": "All the fans left."
+      },
+      {
+            "q": "What did the zero say to the eight?",
+            "a": "Nice belt."
+      },
+      {
+            "q": "Why can’t a leopard hide?",
+            "a": "Because it’s always spotted."
+      },
+      {
+            "q": "What do you call a boomerang that doesn’t come back?",
+            "a": "A stick."
+      },
+      {
+            "q": "Why did the mushroom get invited to parties?",
+            "a": "Because he was a fungi."
+      },
+      {
+            "q": "What do you call a sad strawberry?",
+            "a": "A blueberry."
+      },
+      {
+            "q": "Why did the clock get in trouble?",
+            "a": "It tocked too much."
+      },
+      {
+            "q": "What did one ocean say to the other ocean?",
+            "a": "Nothing, they just waved."
+      }
+];
+    const MILESTONES = {
+      10: "Okay, you're committed.",
+      15: "This is no longer casual.",
+      20: "You can stop now.",
+      30: "Seriously. We have actual work to show you.",
+      40: "Blink twice if you need help.",
+      50: "HR has been notified."
+    };
+
     const SLOTS = [
-      { x: 0.18, y: 0.24 }, { x: 0.34, y: 0.20 }, { x: 0.52, y: 0.20 }, { x: 0.70, y: 0.22 }, { x: 0.84, y: 0.28 },
-      { x: 0.15, y: 0.44 }, { x: 0.28, y: 0.48 }, { x: 0.72, y: 0.48 }, { x: 0.86, y: 0.46 },
-      { x: 0.18, y: 0.70 }, { x: 0.34, y: 0.74 }, { x: 0.66, y: 0.72 }, { x: 0.82, y: 0.70 }
+      { x: 0.20, y: 0.24 }, { x: 0.36, y: 0.22 }, { x: 0.55, y: 0.20 }, { x: 0.74, y: 0.24 }, { x: 0.86, y: 0.34 },
+      { x: 0.18, y: 0.48 }, { x: 0.32, y: 0.56 }, { x: 0.68, y: 0.50 }, { x: 0.84, y: 0.55 },
+      { x: 0.22, y: 0.72 }, { x: 0.46, y: 0.75 }, { x: 0.70, y: 0.72 }, { x: 0.84, y: 0.76 }
     ];
 
-    const activeSlots = new Set();
-    const MAX_ACTIVE = 7;
-    const LIFE_MS = 5000;
-    const HIT_RADIUS = 58;
-    let score = 0;
+    let score = Number(sessionStorage.getItem(SCORE_KEY) || 0);
+    let currentIcon = null;
+    let currentSlot = -1;
+    let recentSlots = [];
+    let activeIcons = [];
+    let endlessBurstTimer = null;
+    let spawnTimer = null;
+    let fadeTimer = null;
+    let mode = sessionStorage.getItem(SESSION_KEY) === "1" ? "unlocked" : "idle";
+    let jokeCooldownUntil = 0;
+    let lastMove = null;
+    let hoverRaf = null;
+    let lastMilestone = 0;
 
-    function randomIcon() {
-      return ICONS[Math.floor(Math.random() * ICONS.length)];
+    function randomFrom(list) {
+      return list[Math.floor(Math.random() * list.length)];
     }
 
-    function openSlots() {
-      return SLOTS.map((slot, index) => ({ slot, index })).filter((item) => !activeSlots.has(item.index));
+    function setDots() {
+      progress.querySelectorAll(".spark-dot").forEach((dot, index) => {
+        dot.classList.toggle("is-filled", index < Math.min(score, GOAL));
+      });
+    }
+
+    function nextDelay(first) {
+      if (first) return 1000 + Math.random() * 1000;
+      if (score < 4) return 2500 + Math.random() * 1500;
+      if (score < 7) return 2000 + Math.random() * 1000;
+      if (score < 8) return 1500 + Math.random() * 500;
+
+      let base = 900 + Math.random() * 900;
+      if (score >= 26) base *= 0.5;
+      else if (score >= 16) base *= 0.65;
+      else if (score >= 9) base *= 0.8;
+      return Math.max(350, base);
+    }
+
+    function setInitialState() {
+      card.classList.remove("is-playing", "is-complete", "is-reward", "is-minimized");
+      kicker.textContent = "Mini challenge";
+      title.innerHTML = "Catch 8<br>Creative Sparks.";
+      copy.textContent = "Catch them before they disappear.";
+      button.textContent = "Start Challenge";
+      button.disabled = false;
+      reward.textContent = "";
+      setDots();
+    }
+
+    function setPlayingState() {
+      card.classList.add("is-playing");
+      card.classList.remove("is-complete", "is-reward", "is-minimized");
+      kicker.textContent = "Sparks caught";
+      title.innerHTML = score + " / " + GOAL;
+      copy.textContent = score < GOAL ? "Catch them before they disappear." : "Mystery unlocked.";
+      button.textContent = "Challenge Running";
+      button.disabled = true;
+      reward.textContent = "";
+      setDots();
+    }
+
+    function setRewardState() {
+      mode = "reward";
+      sessionStorage.setItem(SESSION_KEY, "1");
+      sessionStorage.setItem(SCORE_KEY, String(score));
+      clearTimers();
+      removeCurrent(false);
+
+      const joke = randomFrom(JOKES);
+      card.classList.add("is-complete", "is-reward");
+      card.classList.remove("is-playing", "is-minimized");
+      kicker.textContent = "8/8 — You did it.";
+      title.innerHTML = "Your extremely<br>serious reward:";
+      copy.innerHTML = joke.q + "<br><strong>" + joke.a + "</strong><br><br>That's it. That's the reward.";
+      button.textContent = "Keep Going →";
+      button.disabled = false;
+      reward.textContent = "";
+      setDots();
+    }
+
+    function setMinimizedState() {
+      mode = "endless";
+      card.classList.add("is-minimized", "is-playing");
+      card.classList.remove("is-complete", "is-reward");
+      title.innerHTML = "⚡ " + score + " Sparks";
+      clearTimers();
+      spawnEndlessBurst(true);
+    }
+
+    function clearTimers() {
+      window.clearTimeout(spawnTimer);
+      window.clearTimeout(fadeTimer);
+      window.clearTimeout(endlessBurstTimer);
+      spawnTimer = null;
+      fadeTimer = null;
+      endlessBurstTimer = null;
     }
 
     function slotPosition(slot) {
       const rect = hero.getBoundingClientRect();
-      const jitterX = (Math.random() - 0.5) * Math.min(32, rect.width * 0.018);
-      const jitterY = (Math.random() - 0.5) * Math.min(26, rect.height * 0.026);
-      return { x: slot.x * rect.width + jitterX, y: slot.y * rect.height + jitterY };
+      const jitterX = (Math.random() - 0.5) * Math.min(90, rect.width * 0.06);
+      const jitterY = (Math.random() - 0.5) * Math.min(70, rect.height * 0.07);
+      return {
+        x: Math.max(110, Math.min(rect.width - 110, slot.x * rect.width + jitterX)),
+        y: Math.max(125, Math.min(rect.height - 105, slot.y * rect.height + jitterY))
+      };
     }
 
-    function spawnSpark(x, y) {
+    function removeCurrent(scored) {
+      if (!currentIcon) return;
+      const el = currentIcon;
+      currentIcon = null;
+      currentSlot = -1;
+      window.clearTimeout(fadeTimer);
+      el.classList.add(scored ? "is-hit" : "is-fading");
+      window.setTimeout(() => el.remove(), 560);
+    }
+
+    function burst(x, y) {
       const spark = document.createElement("div");
       spark.className = "hero-spark";
       spark.style.left = x + "px";
       spark.style.top = y + "px";
       container.appendChild(spark);
-      setTimeout(() => spark.remove(), 520);
+
+      const plus = document.createElement("div");
+      plus.className = "hero-plus-one";
+      plus.textContent = "+1";
+      plus.style.left = x + "px";
+      plus.style.top = y + "px";
+      container.appendChild(plus);
+
+      window.setTimeout(() => spark.remove(), 620);
+      window.setTimeout(() => plus.remove(), 820);
     }
 
-    function updateScore() {
-      scoreEl.textContent = String(score);
-      if (scoreEl.animate) {
-        scoreEl.animate(
-          [{ transform: "scale(1)" }, { transform: "scale(1.12)" }, { transform: "scale(1)" }],
-          { duration: 240, easing: "ease-out" }
-        );
-      }
-    }
+    function showMilestone() {
+      const message = MILESTONES[score];
+      if (!message || lastMilestone === score) return;
+      lastMilestone = score;
 
-    function removeIcon(el, slotIndex, scored) {
-      if (!el || el.dataset.dead === "1") return;
-      el.dataset.dead = "1";
-
-      const x = parseFloat(el.style.left) || 0;
-      const y = parseFloat(el.style.top) || 0;
-
-      if (scored) {
-        score += 1;
-        updateScore();
-        spawnSpark(x, y);
-      }
-
-      el.classList.add("is-hit");
-
-      setTimeout(() => {
-        el.remove();
-        activeSlots.delete(slotIndex);
-        setTimeout(spawnIcon, 900 + Math.random() * 1500);
-      }, 540);
-    }
-
-    function spawnIcon() {
-      if (container.querySelectorAll(".hero-icon").length >= MAX_ACTIVE) return;
-
-      const available = openSlots();
-      if (!available.length) return;
-
-      const chosen = available[Math.floor(Math.random() * available.length)];
-      activeSlots.add(chosen.index);
-
-      const pos = slotPosition(chosen.slot);
       const el = document.createElement("div");
+      el.className = "spark-game-milestone";
+      el.textContent = message;
+      hero.appendChild(el);
+      requestAnimationFrame(() => el.classList.add("is-visible"));
+      window.setTimeout(() => el.remove(), 2900);
+    }
+
+    function cleanActiveIcons() {
+      activeIcons = activeIcons.filter((icon) => icon && icon.parentNode && !icon.classList.contains("is-hit") && !icon.classList.contains("is-fading"));
+
+      while (activeIcons.length > 4) {
+        const extra = activeIcons.shift();
+        if (extra) {
+          extra.classList.add("is-fading");
+          window.setTimeout(() => extra.remove(), 360);
+        }
+      }
+
+      currentIcon = activeIcons[0] || null;
+    }
+
+    function endlessDelay() {
+      let base = 1500 + Math.random() * 1300;
+      if (score >= 26) base *= 0.72;
+      else if (score >= 16) base *= 0.82;
+      else if (score >= 9) base *= 0.92;
+      return Math.max(850, base);
+    }
+
+    function endlessCount() {
+      if (score >= 26) return 3;
+      if (score >= 16) return 2;
+      return 2;
+    }
+
+    function spawnEndlessBurst(first) {
+      if (mode !== "endless") return;
+      window.clearTimeout(endlessBurstTimer);
+
+      cleanActiveIcons();
+      const availableSlots = Math.max(0, 4 - activeIcons.length);
+      const amount = Math.min(first ? 2 : endlessCount(), availableSlots);
+
+      for (let i = 0; i < amount; i += 1) {
+        window.setTimeout(() => spawnSpark(true), i * 220);
+      }
+
+      endlessBurstTimer = window.setTimeout(() => spawnEndlessBurst(false), first ? 950 : endlessDelay());
+    }
+
+    function scheduleNext(first) {
+      if (mode !== "playing" || currentIcon) return;
+      clearTimers();
+      spawnTimer = window.setTimeout(spawnSpark, nextDelay(first));
+    }
+
+    function spawnSpark(isEndless = false) {
+      cleanActiveIcons();
+      if (mode !== "playing" && mode !== "endless") return;
+      if (mode === "endless" || isEndless) {
+        cleanActiveIcons();
+        if (activeIcons.length >= 4) return;
+      }
+      if (mode === "playing" && currentIcon) {
+        if (currentIcon.classList.contains("is-fading") || currentIcon.classList.contains("is-hit") || !currentIcon.parentNode) {
+          currentIcon = null;
+        } else {
+          return;
+        }
+      }
+
+      cleanActiveIcons();
+
+      let slotIndex = Math.floor(Math.random() * SLOTS.length);
+      let guard = 0;
+      while ((recentSlots.includes(slotIndex) || slotIndex === currentSlot) && guard < 40) {
+        slotIndex = Math.floor(Math.random() * SLOTS.length);
+        guard += 1;
+      }
+
+      currentSlot = slotIndex;
+      recentSlots.push(slotIndex);
+      if (recentSlots.length > 6) recentSlots.shift();
+
+      const pos = slotPosition(SLOTS[slotIndex]);
+      const el = document.createElement("button");
+      el.type = "button";
       el.className = "hero-icon";
-      el.dataset.slotIndex = String(chosen.index);
       el.style.left = pos.x + "px";
       el.style.top = pos.y + "px";
-      el.style.setProperty("--float-dur", (8 + Math.random() * 4).toFixed(2) + "s");
-      el.style.setProperty("--float-delay", (Math.random() * 1.5).toFixed(2) + "s");
+      el.setAttribute("aria-label", "Catch spark");
       el.innerHTML =
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round">' +
-        randomIcon() +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">' +
+        randomFrom(ICONS) +
         "</svg>";
 
+      el.addEventListener("click", () => catchSpark(el));
+      el.addEventListener("pointerenter", () => {
+        if (supportsHover) catchSpark(el);
+      });
+
       container.appendChild(el);
-      setTimeout(() => removeIcon(el, chosen.index, false), LIFE_MS);
+
+      if (mode === "endless" || isEndless) {
+        activeIcons.push(el);
+        currentIcon = activeIcons[0] || el;
+        window.setTimeout(() => {
+          if (!el.parentNode || el.classList.contains("is-hit")) return;
+          el.classList.add("is-fading");
+          window.setTimeout(() => {
+            el.remove();
+            cleanActiveIcons();
+          }, 420);
+        }, LIFE_MS);
+      } else {
+        currentIcon = el;
+        fadeTimer = window.setTimeout(() => {
+          if (!currentIcon) return;
+          const missed = currentIcon;
+          currentIcon = null;
+          missed.classList.add("is-fading");
+          window.setTimeout(() => missed.remove(), 420);
+          window.setTimeout(() => scheduleNext(false), 460);
+        }, LIFE_MS);
+      }
     }
 
-    function checkHoverHit(event) {
+    function catchSpark(targetIcon = currentIcon) {
+      if ((mode !== "playing" && mode !== "endless") || !targetIcon) return;
+      if (targetIcon.classList.contains("is-hit") || targetIcon.classList.contains("is-fading")) return;
+
+      const x = parseFloat(targetIcon.style.left) || 0;
+      const y = parseFloat(targetIcon.style.top) || 0;
+
+      score += 1;
+      sessionStorage.setItem(SCORE_KEY, String(score));
+      burst(x, y);
+
+      if (mode === "endless") {
+        targetIcon.classList.add("is-hit");
+        window.setTimeout(() => {
+          targetIcon.remove();
+          cleanActiveIcons();
+        }, 520);
+      } else {
+        currentIcon = null;
+        window.clearTimeout(fadeTimer);
+        fadeTimer = null;
+        targetIcon.classList.add("is-hit");
+        window.setTimeout(() => targetIcon.remove(), 520);
+      }
+
+      if (score === GOAL) {
+        window.setTimeout(setRewardState, 420);
+        return;
+      }
+
+      if (mode === "endless") {
+        title.innerHTML = "⚡ " + score + " Sparks";
+        showMilestone();
+      } else {
+        setPlayingState();
+        scheduleNext(false);
+      }
+    }
+
+    function checkHover(event) {
+      if (!supportsHover) return;
+      if (mode !== "playing" && mode !== "endless") return;
+
+      cleanActiveIcons();
+      const iconsToCheck = mode === "endless" ? activeIcons.slice() : [currentIcon];
       const rect = hero.getBoundingClientRect();
       const mx = event.clientX - rect.left;
       const my = event.clientY - rect.top;
 
-      container.querySelectorAll(".hero-icon:not(.is-hit)").forEach((el) => {
-        const x = parseFloat(el.style.left) || 0;
-        const y = parseFloat(el.style.top) || 0;
+      for (const icon of iconsToCheck) {
+        if (!icon) continue;
+        const x = parseFloat(icon.style.left) || 0;
+        const y = parseFloat(icon.style.top) || 0;
         if (Math.hypot(mx - x, my - y) <= HIT_RADIUS) {
-          removeIcon(el, Number(el.dataset.slotIndex), true);
+          catchSpark(icon);
+          break;
         }
-      });
+      }
     }
 
-    let hoverRaf = null;
-    let lastMove = null;
+    function startChallenge() {
+      score = 0;
+      sessionStorage.setItem(SCORE_KEY, "0");
+      mode = "playing";
+      removeCurrent(false);
+      setPlayingState();
+      scheduleNext(true);
+    }
+
+    function showJoke() {
+      if (mode !== "reward" && mode !== "unlocked") return;
+      const now = Date.now();
+      if (now < jokeCooldownUntil) {
+        const remaining = Math.ceil((jokeCooldownUntil - now) / 1000);
+        button.textContent = "Wait " + remaining + "s";
+        return;
+      }
+
+      const joke = randomFrom(JOKES);
+      copy.innerHTML = joke.q + "<br><strong>" + joke.a + "</strong><br><br>That's it. That's the reward.";
+      jokeCooldownUntil = now + COOLDOWN_MS;
+      button.disabled = true;
+
+      const tick = window.setInterval(() => {
+        const remaining = Math.ceil((jokeCooldownUntil - Date.now()) / 1000);
+        if (remaining <= 0) {
+          window.clearInterval(tick);
+          button.textContent = "Keep Going →";
+          button.disabled = false;
+          return;
+        }
+        button.textContent = "Wait " + remaining + "s";
+      }, 250);
+    }
+
+    function startEndless() {
+      if (score < GOAL) score = GOAL;
+      setMinimizedState();
+    }
+
     hero.addEventListener("pointermove", (event) => {
       lastMove = event;
       if (hoverRaf) return;
-      hoverRaf = requestAnimationFrame(() => {
+      hoverRaf = window.requestAnimationFrame(() => {
         hoverRaf = null;
-        if (lastMove) checkHoverHit(lastMove);
+        if (lastMove) checkHover(lastMove);
       });
     });
 
-    function init() {
-      container.innerHTML = "";
-      activeSlots.clear();
-      for (let i = 0; i < MAX_ACTIVE; i++) setTimeout(spawnIcon, i * 320);
-    }
-
-    let resizeTimer = null;
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(init, 300);
+    button.addEventListener("click", () => {
+      if (mode === "idle") startChallenge();
+      else if (mode === "reward" || mode === "unlocked") startEndless();
     });
 
-    init();
+    window.addEventListener("resize", () => {
+      removeCurrent(false);
+      activeIcons.forEach((icon) => icon.remove());
+      activeIcons = [];
+      if (mode === "playing") scheduleNext(false);
+      if (mode === "endless") spawnEndlessBurst(true);
+    });
+
+    if (mode === "unlocked") {
+      score = Math.max(GOAL, score || GOAL);
+      setRewardState();
+    } else {
+      setInitialState();
+    }
   })();
 
   // Services background — same artboard grid + cursor comet as hero, without the game icons.
