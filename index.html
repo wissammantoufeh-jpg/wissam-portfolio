@@ -830,7 +830,7 @@
     filter: grayscale(1) brightness(1.75);
     opacity: 0.86;
   }
-  @keyframes marquee { from { transform: translateX(100vw); } to { transform: translateX(-100%); } } to { transform: translateX(-50%); } }
+  @keyframes marquee { from { transform: translateX(100vw); } to { transform: translateX(-100%); } }
 
 
   /* ==========================================================
@@ -1056,12 +1056,12 @@
   }
 
   .services-content {
-    width: min(100% - 48px, 1040px);
+    width: min(min(100vw - 2 * var(--side-pad), var(--page-max)) - 56px, 1160px);
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-columns: minmax(390px, 0.9fr) minmax(360px, 1fr);
-    gap: clamp(120px, 12vw, 200px);
+    grid-template-columns: minmax(340px, 1fr) max-content;
+    gap: clamp(100px, 11vw, 180px);
     align-items: center;
   }
 
@@ -1275,6 +1275,21 @@
 
     .service-text {
       font-size: clamp(17px, 5vw, 22px);
+    }
+  }
+
+  /* Between phone-narrow and full desktop there isn't room for the
+     big display title beside the service list without one crowding
+     the other — stack them instead of forcing both into shrinking
+     columns. */
+  @media (min-width: 901px) and (max-width: 1200px) {
+    .services-content {
+      grid-template-columns: 1fr !important;
+      gap: 56px !important;
+    }
+
+    .services-title {
+      font-size: clamp(80px, 9vw, 150px) !important;
     }
   }
   /* ==========================================================
@@ -2262,6 +2277,31 @@ margin-bottom: 0;
     margin-bottom: clamp(46px, 6vh, 80px) !important;
   }
 
+  /* Unconditional (all widths) — the gap between the About paragraph
+     and the Services heading kept coming back at breakpoints the
+     narrower overrides below didn't cover. Set it once, everywhere. */
+  .about {
+    margin-bottom: 20px !important;
+  }
+
+  .services {
+    margin-top: 20px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  @media (max-width: 900px) {
+    .about {
+      margin-bottom: 20px !important;
+    }
+
+    .services {
+      margin-top: 20px !important;
+      padding-top: 48px !important;
+      padding-bottom: 48px !important;
+    }
+  }
+
   .work {
     margin-top: clamp(52px, 7vh, 88px) !important;
     padding-top: clamp(46px, 6vw, 76px) !important;
@@ -2280,6 +2320,13 @@ margin-bottom: 0;
   @media (max-width: 760px) {
     .services {
       margin-bottom: 52px !important;
+      margin-top: 16px !important;
+      padding-top: 32px !important;
+      padding-bottom: 32px !important;
+    }
+
+    .about {
+      margin-bottom: 16px !important;
     }
 
     .work {
@@ -3721,8 +3768,8 @@ margin-bottom: 0;
   }
 
   .about {
-    padding-top: clamp(82px, 9vw, 128px) !important;
-    padding-bottom: clamp(76px, 9vw, 128px) !important;
+    padding-top: 48px !important;
+    padding-bottom: 32px !important;
   }
 
   .about-inner,
@@ -3864,7 +3911,7 @@ margin-bottom: 0;
 
     .about {
       padding-top: 70px !important;
-      padding-bottom: 68px !important;
+      padding-bottom: 24px !important;
     }
 
     .selected-work-row {
@@ -3892,7 +3939,7 @@ margin-bottom: 0;
     display: grid !important;
     grid-template-columns: minmax(250px, 0.55fr) minmax(520px, 1fr) !important;
     gap: clamp(86px, 10vw, 150px) !important;
-    align-items: start !important;
+    align-items: end !important;
   }
 
   .about-small {
@@ -3942,18 +3989,11 @@ margin-bottom: 0;
     color: var(--yellow) !important;
   }
 
-  .about:not(.is-visible) .about-small,
-  .about:not(.is-visible) .about-copy {
-    opacity: 0 !important;
-    transform: translateY(34px) !important;
-    filter: blur(8px) !important;
-  }
-
-  .about.is-visible .about-small,
-  .about.is-visible .about-copy {
+  .about .about-small,
+  .about .about-copy {
     opacity: 1 !important;
     transform: translateY(0) !important;
-    filter: blur(0) !important;
+    filter: none !important;
   }
 
   .about .about-small,
@@ -4076,13 +4116,15 @@ margin-bottom: 0;
   }
 
 
-  /* Final About alignment with Services grid */
+  /* Final About alignment with Services grid — one stacked block,
+     not two side-by-side columns, so there's nothing left to
+     horizontally mis-align with the services heading below. */
   .about-inner {
     width: min(100% - 56px, 1160px) !important;
     margin: 0 auto !important;
     display: grid !important;
-    grid-template-columns: minmax(360px, 0.9fr) minmax(520px, 1fr) !important;
-    gap: clamp(76px, 9vw, 136px) !important;
+    grid-template-columns: 1fr !important;
+    gap: clamp(18px, 2.4vw, 30px) !important;
     align-items: start !important;
   }
 
@@ -4101,9 +4143,9 @@ margin-bottom: 0;
   }
 
   .about-copy p {
-    font-size: clamp(42px, 4.05vw, 68px) !important;
-    line-height: 1.035 !important;
-    letter-spacing: -0.055em !important;
+    font-size: clamp(32px, 3.6vw, 66px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.04em !important;
   }
 
   .about-copy .about-keep-white {
@@ -4167,22 +4209,19 @@ margin-bottom: 0;
     gap: 0 !important;
     width: 100% !important;
     align-content: center !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
   }
 
   .service-accordion-item {
     position: relative;
     width: 100%;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.105);
     opacity: 0;
     transform: translateY(26px);
     transition:
       opacity 560ms ease,
       transform 680ms cubic-bezier(0.16, 0.84, 0.44, 1),
       border-color 220ms ease;
-  }
-
-  .service-accordion-item:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.105);
   }
 
   .services.is-visible .service-accordion-item {
@@ -4200,7 +4239,8 @@ margin-bottom: 0;
   .services.is-visible .service-accordion-item:nth-child(8) { transition-delay: 370ms; }
 
   .service-accordion-trigger {
-    width: 100%;
+    width: fit-content;
+    max-width: 100%;
     min-height: clamp(58px, 5.2vw, 78px);
     display: grid;
     grid-template-columns: 34px minmax(0, 1fr);
@@ -4208,6 +4248,7 @@ margin-bottom: 0;
     gap: clamp(14px, 1.8vw, 24px);
     padding: clamp(16px, 1.6vw, 22px) 0;
     border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.105);
     background: transparent;
     color: var(--white);
     text-align: left;
@@ -4241,8 +4282,9 @@ margin-bottom: 0;
   .service-accordion-title {
     display: block;
     width: fit-content;
+    white-space: nowrap !important;
     font-family: var(--font-body);
-    font-size: clamp(19px, 1.55vw, 27px);
+    font-size: clamp(15px, 1.35vw, 24px);
     font-weight: 900;
     line-height: 1.02;
     letter-spacing: -0.025em;
@@ -4286,9 +4328,12 @@ margin-bottom: 0;
     transform: translateY(-6px);
   }
 
-  .service-accordion-item:hover,
-  .service-accordion-item.is-open {
+  .service-accordion-item:hover .service-accordion-trigger {
     border-color: rgba(244, 192, 38, 0.34);
+  }
+
+  .service-accordion-item.is-open .service-accordion-trigger {
+    border-color: transparent;
   }
 
   .service-accordion-trigger:hover .service-accordion-title,
@@ -4328,6 +4373,7 @@ margin-bottom: 0;
 
   @media (max-width: 900px) {
     .service-accordion-trigger {
+      width: 100%;
       grid-template-columns: 30px minmax(0, 1fr);
       gap: 12px;
       min-height: 58px;
@@ -4344,6 +4390,7 @@ margin-bottom: 0;
     .service-accordion-title {
       font-size: clamp(18px, 4.7vw, 24px);
       line-height: 1.05;
+      white-space: normal !important;
     }
 
     .service-accordion-panel > p {
@@ -4674,11 +4721,11 @@ margin-bottom: 0;
   }
 
   .selected-work-arrow-badge {
-    align-self: start !important;
+    align-self: center !important;
     justify-self: center !important;
     width: 32px !important;
     height: 32px !important;
-    margin-top: 3px !important;
+    margin-top: 0 !important;
     display: grid !important;
     place-items: center !important;
     font-family: var(--font-body) !important;
@@ -5221,6 +5268,446 @@ margin-bottom: 0;
     }
   }
 
+
+  /* ==========================================================
+     HERO STACKING + SERVICES ACCORDION + SPARK GAME
+     (consolidated — this used to be ~15 stacked "final fix"
+     patches for the same few selectors; kept only the parts
+     that are still unique/needed. The clients marquee itself
+     is defined once, further below.)
+     ========================================================== */
+  .hero {
+    position: relative !important;
+    min-height: 100svh !important;
+    height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  .hero-title-outer,
+  .hero-inner {
+    position: relative !important;
+    z-index: 6 !important;
+  }
+
+  .spark-game,
+  .creative-sparks,
+  .mini-challenge,
+  .game-card,
+  [class*="challenge"] {
+    position: relative;
+    z-index: 130 !important;
+    pointer-events: auto !important;
+  }
+
+  .service-accordion-trigger {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+  .service-accordion-panel {
+    overflow: hidden !important;
+  }
+
+  .service-accordion-item.is-open .service-accordion-panel {
+    grid-template-rows: 1fr !important;
+  }
+
+  .service-accordion-item.is-open .service-accordion-panel > p {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    padding-bottom: clamp(18px, 1.8vw, 24px) !important;
+  }
+
+  /* Hide any legacy client-strip markup so only the one clean
+     marquee below (#wd-clients-marquee) ever shows. */
+  .hero .clients,
+  .hero .clients-marquee,
+  .hero .clients-track,
+  .hero .clients-strip,
+  .hero .client-logos,
+  .hero .clients-row,
+  .hero .hero-clients,
+  .hero .hero-clients-fixed,
+  .hero .hero-clients-guaranteed {
+    display: none !important;
+  }
+
+  main.page > .clients,
+  .clients:not(.hero-clients-fixed) {
+    margin-top: 0 !important;
+    min-height: 0 !important;
+  }
+
+  /* FIX ONLY: clients marquee + hero cursor movement + spark clickability */
+  .hero {
+    position: relative !important;
+    min-height: 100svh !important;
+    height: 100svh !important;
+    overflow: hidden !important;
+  }
+
+  #wd-clients-marquee {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: clamp(82px, 12vh, 138px) !important;
+    width: 100vw !important;
+    overflow: hidden !important;
+    z-index: 18 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: none !important;
+  }
+
+  #wd-clients-track {
+    display: flex !important;
+    align-items: center !important;
+    width: max-content !important;
+    gap: 0 !important;
+    will-change: transform !important;
+    animation: wdClientsMarqueeClean 32s linear infinite !important;
+  }
+
+  .wd-clients-set {
+    flex: 0 0 auto !important;
+    width: 130vw !important;
+    min-width: 130vw !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .wd-clients-set img {
+    display: block !important;
+    width: 130vw !important;
+    max-width: none !important;
+    height: auto !important;
+    opacity: 0.96 !important;
+    visibility: visible !important;
+    transform: none !important;
+    rotate: 0deg !important;
+    filter: grayscale(1) brightness(1.48) contrast(1.08) !important;
+  }
+
+  @keyframes wdClientsMarqueeClean {
+    from { transform: translate3d(0, 0, 0); }
+    to { transform: translate3d(-130vw, 0, 0); }
+  }
+
+  .hero .clients,
+  .hero .clients-strip,
+  .hero .clients-row,
+  .hero .clients-marquee,
+  .hero .client-logos,
+  .hero .hero-clients,
+  .hero .hero-clients-fixed,
+  .hero .hero-clients-guaranteed {
+    display: none !important;
+  }
+
+  .hero-title-poster {
+    --wdHeroX: 0px;
+    --wdHeroY: 0px;
+    transform: translate3d(var(--wdHeroX), calc(-6vh + var(--wdHeroY)), 0) !important;
+    will-change: transform !important;
+    transition: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .hero-title-poster {
+      transform: translate3d(var(--wdHeroX), calc(-4vh + var(--wdHeroY)), 0) !important;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .hero-title-poster {
+      transform: translate3d(var(--wdHeroX), calc(-2vh + var(--wdHeroY)), 0) !important;
+    }
+  }
+
+  .spark,
+  .creative-spark,
+  .game-spark,
+  .spark-hitbox,
+  [data-spark] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 140 !important;
+  }
+
+  .spark-trail,
+  .spark-path,
+  .hero-arc,
+  .hero-canvas,
+  canvas {
+    pointer-events: none !important;
+  }
+
+  @media (max-width: 900px) {
+    #wd-clients-marquee { bottom: clamp(74px, 11vh, 118px) !important; }
+    .wd-clients-set,
+    .wd-clients-set img { width: 145vw !important; min-width: 145vw !important; }
+    @keyframes wdClientsMarqueeClean {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-145vw, 0, 0); }
+    }
+  }
+
+  @media (max-width: 700px) {
+    #wd-clients-marquee { bottom: clamp(58px, 10vh, 92px) !important; }
+    .wd-clients-set,
+    .wd-clients-set img { width: 165vw !important; min-width: 165vw !important; }
+    @keyframes wdClientsMarqueeClean {
+      from { transform: translate3d(0, 0, 0); }
+      to { transform: translate3d(-165vw, 0, 0); }
+    }
+  }
+
+
+  /* FINAL: bigger invisible spark hit area */
+  .spark,
+  .creative-spark,
+  .game-spark,
+  .spark-hitbox,
+  [data-spark] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 160 !important;
+    touch-action: manipulation !important;
+  }
+
+  .spark::before,
+  .creative-spark::before,
+  .game-spark::before,
+  .spark-hitbox::before,
+  [data-spark]::before {
+    content: "";
+    position: absolute;
+    inset: -34px;
+    border-radius: 999px;
+    pointer-events: auto;
+  }
+
+
+  /* REAL FIX: Spark collection layer */
+  .wd-spark-catcher {
+    position: absolute !important;
+    width: 110px !important;
+    height: 110px !important;
+    border-radius: 999px !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    background: rgba(244, 192, 38, 0.001) !important;
+  }
+
+  .wd-spark-catcher::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    background: rgba(244, 192, 38, 0.16);
+    box-shadow:
+      0 0 18px rgba(244, 192, 38, 0.75),
+      0 0 42px rgba(244, 192, 38, 0.32);
+    pointer-events: none;
+  }
+
+  .wd-spark-catcher::before {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -54%);
+    font-size: 24px;
+    line-height: 1;
+    color: var(--yellow);
+    text-shadow: 0 0 18px rgba(244, 192, 38, 0.95);
+    pointer-events: none;
+  }
+
+  .wd-spark-catcher.is-caught {
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) scale(0.35) !important;
+    transition: opacity 180ms ease, transform 180ms ease !important;
+    pointer-events: none !important;
+  }
+
+  .wd-plus-one {
+    position: fixed;
+    z-index: 10000;
+    color: var(--yellow);
+    font-family: var(--font-body);
+    font-size: 30px;
+    font-weight: 950;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    animation: wdPlusOne 620ms ease forwards;
+    text-shadow: 0 0 22px rgba(244, 192, 38, 0.9);
+  }
+
+  @keyframes wdPlusOne {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(.8); }
+    18% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -120%) scale(1.1); }
+  }
+
+
+  /* FIX: invisible spark hitbox only, no visible circles */
+  .wd-spark-catcher,
+  .wd-spark-catcher::before,
+  .wd-spark-catcher::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    outline: 0 !important;
+    color: transparent !important;
+    text-shadow: none !important;
+  }
+
+  .wd-spark-catcher {
+    position: absolute !important;
+    width: 86px !important;
+    height: 86px !important;
+    border-radius: 999px !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+  }
+
+  .wd-spark-catcher.is-caught {
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+
+
+  /* FINAL: larger invisible spark hitbox that follows moving sparks */
+  .wd-spark-catcher {
+    position: absolute !important;
+    width: 126px !important;
+    height: 126px !important;
+    border-radius: 999px !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    border: 0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+    color: transparent !important;
+    touch-action: manipulation !important;
+  }
+
+  .wd-spark-catcher::before,
+  .wd-spark-catcher::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .wd-spark-catcher.is-caught {
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+
+
+  /* FINAL spark catch fix: no visible helper circles */
+  .wd-plus-one {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    color: var(--yellow);
+    font-family: var(--font-body);
+    font-size: 30px;
+    font-weight: 950;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 18px rgba(244, 192, 38, 0.82);
+    animation: wdPlusOneFloat 620ms ease forwards;
+  }
+
+  @keyframes wdPlusOneFloat {
+    0% { opacity: 0; transform: translate(-50%, -45%) scale(.84); }
+    18% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -120%) scale(1.08); }
+  }
+
+  .spark,
+  .creative-spark,
+  .game-spark,
+  .spark-hitbox,
+  [data-spark] {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 9999 !important;
+  }
+
+  canvas,
+  .hero-canvas,
+  .spark-trail,
+  .spark-path,
+  .hero-arc {
+    pointer-events: none !important;
+  }
+
+
+  /* FINAL REAL SPARK FIX: enlarge the original spark button hit area only */
+  .hero-icon {
+    width: 132px !important;
+    height: 132px !important;
+    padding: 45px !important;
+    margin: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    pointer-events: auto !important;
+    cursor: crosshair !important;
+    z-index: 9999 !important;
+  }
+
+  .hero-icon svg {
+    width: 42px !important;
+    height: 42px !important;
+    display: block !important;
+    pointer-events: none !important;
+  }
+
+  .hero-icon::before,
+  .hero-icon::after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .hero-icon.is-hit,
+  .hero-icon.is-fading {
+    pointer-events: none !important;
+  }
+
+  .hero-canvas,
+  .hero-arc,
+  canvas {
+    pointer-events: none !important;
+  }
+
+  /* Keep the About text block near the top of its section with a
+     modest, controlled gap — placed last so it wins regardless of
+     the legacy grid rules still sitting earlier in this file. */
+  .about {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    min-height: 0 !important;
+    margin-top: 40px !important;
+  }
+
 </style>
 </head>
 <body>
@@ -5287,12 +5774,24 @@ margin-bottom: 0;
 <div class="clients reveal">
       <div class="clients-marquee" aria-label="Client logos">
         <div class="clients-track">
-          <img src="https://www.wissamdesigns.com/assets/Clients.png" alt="Wissam Designs clients" />
+          <img src="https://www.wissamdesigns.com/assets/Clients1.png" alt="Wissam Designs clients" />
         </div>
       </div>
     </div>
   </div>
-</section>
+
+      <div id="wd-clients-marquee" aria-label="Client logos">
+        <div id="wd-clients-track">
+          <div class="wd-clients-set">
+            <img src="https://raw.githubusercontent.com/wissammantoufeh-jpg/wissam-portfolio/main/assets/Clients1.png" alt="Wissam Designs clients" loading="eager" decoding="async">
+          </div>
+          <div class="wd-clients-set" aria-hidden="true">
+            <img src="https://raw.githubusercontent.com/wissammantoufeh-jpg/wissam-portfolio/main/assets/Clients1.png" alt="" loading="eager" decoding="async">
+          </div>
+        </div>
+      </div>
+
+  </section>
 
 <main class="page">
 
@@ -6045,7 +6544,7 @@ margin-bottom: 0;
 
     const GOAL = 8;
     const LIFE_MS = 5000;
-    const HIT_RADIUS = 62;
+    const HIT_RADIUS = 135;
     const SESSION_KEY = "wissamCreativeSparksUnlockedV2";
     const SCORE_KEY = "wissamCreativeSparksScoreV2";
     const COOLDOWN_MS = 10000;
@@ -6916,18 +7415,136 @@ margin-bottom: 0;
   })();
 </script>
 
-<script>
+<script id="wd-hero-clients-game-fix">
   (() => {
-    const section = document.querySelector(".selected-work-section");
-    const btn = document.querySelector(".selected-work-more-btn");
-    if (!section || !btn) return;
+    // The clients track scrolls via the CSS "wdClientsMarqueeClean"
+    // keyframes animation (see #wd-clients-track in <style>). A JS
+    // rAF loop used to also write transform on this same element
+    // every frame, fighting the CSS animation for the same property
+    // and making it appear stuck — removed; CSS now drives it alone.
 
-    const label = btn.querySelector(".selected-work-more-label");
+    const hero = document.querySelector(".hero");
+    const title = document.querySelector(".hero-title-poster");
 
-    btn.addEventListener("click", () => {
-      const open = section.classList.toggle("show-more-work");
-      btn.setAttribute("aria-expanded", String(open));
-      if (label) label.textContent = open ? "SHOW LESS" : "VIEW MORE";
+    if (hero && title && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+
+      hero.addEventListener("mousemove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const nx = ((e.clientX - r.left) / r.width) - 0.5;
+        const ny = ((e.clientY - r.top) / r.height) - 0.5;
+        tx = nx * 16;
+        ty = ny * 10;
+      }, { passive: true });
+
+      hero.addEventListener("mouseleave", () => {
+        tx = 0;
+        ty = 0;
+      }, { passive: true });
+
+      const moveTitle = () => {
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        title.style.setProperty("--wdHeroX", `${cx}px`);
+        title.style.setProperty("--wdHeroY", `${cy}px`);
+        requestAnimationFrame(moveTitle);
+      };
+
+      requestAnimationFrame(moveTitle);
+    }
+
+    // Make spark elements actually clickable/hoverable without blocking the original game logic.
+    const markSparkCaught = (spark) => {
+      if (!spark || spark.dataset.wdVisualCaught === "1") return;
+      spark.dataset.wdVisualCaught = "1";
+      spark.style.transition = "opacity 180ms ease, transform 180ms ease";
+      spark.style.opacity = "0";
+      spark.style.transform = "scale(0.35)";
+      spark.style.pointerEvents = "none";
+      setTimeout(() => spark.remove?.(), 220);
+    };
+
+    document.addEventListener("pointerenter", (e) => {
+      const spark = e.target.closest?.(".spark, .creative-spark, .game-spark, .spark-hitbox, [data-spark]");
+      if (!spark) return;
+
+      // Let original pointer/click listeners run first, then hide the spark visually.
+      setTimeout(() => markSparkCaught(spark), 0);
+    }, true);
+
+    document.addEventListener("click", (e) => {
+      const spark = e.target.closest?.(".spark, .creative-spark, .game-spark, .spark-hitbox, [data-spark]");
+      if (!spark) return;
+      setTimeout(() => markSparkCaught(spark), 0);
+    }, true);
+  })();
+</script>
+
+<script id="wd-hero-icon-sensitivity-final">
+  (() => {
+    const RADIUS = 135;
+
+    function collectIcon(icon) {
+      if (!icon || icon.classList.contains("is-hit") || icon.classList.contains("is-fading")) return;
+      icon.click();
+    }
+
+    function check(x, y) {
+      const icons = Array.from(document.querySelectorAll(".hero-icon"))
+        .filter((icon) => !icon.closest(".spark-game-card"));
+
+      for (const icon of icons) {
+        const r = icon.getBoundingClientRect();
+        if (!r.width || !r.height) continue;
+
+        const cx = r.left + r.width / 2;
+        const cy = r.top + r.height / 2;
+
+        if (Math.hypot(x - cx, y - cy) <= RADIUS) {
+          collectIcon(icon);
+          break;
+        }
+      }
+    }
+
+    document.addEventListener("pointermove", (e) => check(e.clientX, e.clientY), { passive: true });
+    document.addEventListener("mousemove", (e) => check(e.clientX, e.clientY), { passive: true });
+    document.addEventListener("pointerdown", (e) => check(e.clientX, e.clientY), { passive: true });
+    document.addEventListener("click", (e) => check(e.clientX, e.clientY), { passive: true });
+    document.addEventListener("touchstart", (e) => {
+      const t = e.touches && e.touches[0];
+      if (t) check(t.clientX, t.clientY);
+    }, { passive: true });
+  })();
+</script>
+
+<script id="wd-services-accordion-toggle">
+  // The services accordion had CSS for open/closed states (grid-rows
+  // animation, hover styling) but nothing ever toggled the "is-open"
+  // class or aria-expanded, so clicking a service never opened its
+  // description. This wires that up: click a trigger to open its
+  // panel, closing any other open panel (single-open accordion).
+  (() => {
+    const items = document.querySelectorAll(".service-accordion-item");
+    if (!items.length) return;
+
+    items.forEach((item) => {
+      const trigger = item.querySelector(".service-accordion-trigger");
+      if (!trigger) return;
+
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
+
+        items.forEach((other) => {
+          if (other === item) return;
+          other.classList.remove("is-open");
+          const otherTrigger = other.querySelector(".service-accordion-trigger");
+          if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+        });
+
+        item.classList.toggle("is-open", !isOpen);
+        trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
     });
   })();
 </script>
