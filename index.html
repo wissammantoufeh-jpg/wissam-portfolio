@@ -7273,6 +7273,234 @@ margin-bottom: 0;
     }
   }
 
+
+  /* MOBILE ONLY — force intro block to true viewport middle */
+  @media (max-width: 700px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      min-height: 100svh !important;
+      height: 100svh !important;
+      width: min(100% - 44px, 340px) !important;
+      max-width: 340px !important;
+      margin: 0 auto !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      text-align: center !important;
+      transform: translateY(-6vh) !important;
+    }
+
+    .about-label,
+    .about-kicker,
+    .about-title,
+    .intro-kicker,
+    .intro-title {
+      width: 100% !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+
+    .about-title,
+    .intro-title {
+      margin-top: 22px !important;
+      margin-bottom: 0 !important;
+      text-align: center !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      width: min(100% - 36px, 310px) !important;
+      max-width: 310px !important;
+      transform: translateY(-5vh) !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — move intro slightly left + fix Creative Studio overflow */
+  @media (max-width: 700px) {
+    /* Move the centered intro block a little left */
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      transform: translate(-12px, -6vh) !important;
+    }
+
+    /* Make CREATIVE STUDIO fit properly on real mobile browsers */
+    .poster-studio-line {
+      width: 100% !important;
+      max-width: calc(100vw - 34px) !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: baseline !important;
+      flex-wrap: nowrap !important;
+      gap: 10px !important;
+      overflow: visible !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .creative-word,
+    .studio-word {
+      font-size: clamp(32px, 10.8vw, 48px) !important;
+      font-weight: 500 !important;
+      line-height: 0.86 !important;
+      letter-spacing: 0.006em !important;
+      white-space: nowrap !important;
+      max-width: none !important;
+      flex: 0 1 auto !important;
+    }
+
+    .hero-title,
+    .hero-title-poster,
+    .hero-title-outer {
+      overflow: visible !important;
+      max-width: 100vw !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      transform: translate(-8px, -5vh) !important;
+    }
+
+    .poster-studio-line {
+      gap: 8px !important;
+      max-width: calc(100vw - 28px) !important;
+    }
+
+    .creative-word,
+    .studio-word {
+      font-size: clamp(29px, 10.2vw, 42px) !important;
+      letter-spacing: 0 !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — remove huge black gap after intro */
+  @media (max-width: 700px) {
+    /* The big gap happened because the intro was forced to 100svh.
+       This makes the block centered without creating a full extra screen. */
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      min-height: auto !important;
+      height: auto !important;
+      width: min(100% - 44px, 340px) !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-bottom: 42px !important;
+      padding-top: 72px !important;
+      padding-bottom: 46px !important;
+      display: grid !important;
+      align-content: center !important;
+      justify-content: center !important;
+      justify-items: center !important;
+      text-align: center !important;
+      transform: translateX(-10px) !important;
+    }
+
+    .about-title,
+    .intro-title {
+      margin-top: 22px !important;
+      margin-bottom: 0 !important;
+      text-align: center !important;
+    }
+
+    /* Bring the next Services section closer */
+    .services,
+    .services-section,
+    .build-section,
+    .what-can-section {
+      margin-top: 0 !important;
+      padding-top: 34px !important;
+    }
+
+    .services-title,
+    .build-title,
+    .what-can-title {
+      margin-top: 0 !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      width: min(100% - 36px, 310px) !important;
+      max-width: 310px !important;
+      padding-top: 62px !important;
+      padding-bottom: 40px !important;
+      margin-bottom: 34px !important;
+      transform: translateX(-8px) !important;
+    }
+
+    .services,
+    .services-section,
+    .build-section,
+    .what-can-section {
+      padding-top: 28px !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — stop Selected Work title from being cut */
+  @media (max-width: 700px) {
+    .selected-work-section {
+      padding-top: 96px !important;
+      overflow: visible !important;
+    }
+
+    .selected-work-inner,
+    .selected-work-title-wrap,
+    .selected-work-heading {
+      overflow: visible !important;
+    }
+
+    .selected-work-title {
+      padding-top: 18px !important;
+      margin-top: 0 !important;
+      line-height: 0.92 !important;
+      overflow: visible !important;
+      transform: none !important;
+      clip-path: none !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .selected-work-section {
+      padding-top: 88px !important;
+    }
+
+    .selected-work-title {
+      padding-top: 16px !important;
+    }
+  }
+
 </style>
 </head>
 <body>
