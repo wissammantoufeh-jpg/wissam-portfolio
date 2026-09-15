@@ -6488,6 +6488,791 @@ margin-bottom: 0;
     }
   }
 
+
+  /* MOBILE ONLY — requested fixes: count state, centered intro, active footer, talk alignment */
+  @media (max-width: 700px) {
+    /* When challenge is running: show SPARKS CAUGHT + count, not only circles */
+    .spark-game-card.is-playing,
+    .spark-game-card.is-minimized {
+      top: 66px !important;
+      left: 16px !important;
+      right: 16px !important;
+      width: auto !important;
+      max-width: none !important;
+      min-width: 0 !important;
+      min-height: 58px !important;
+      padding: 10px 16px !important;
+      border-radius: 16px !important;
+      display: grid !important;
+      align-items: center !important;
+      justify-items: start !important;
+      gap: 4px !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-kicker,
+    .spark-game-card.is-minimized .spark-game-kicker {
+      display: block !important;
+      font-size: 9.5px !important;
+      line-height: 1 !important;
+      letter-spacing: 0.08em !important;
+      margin: 0 !important;
+      color: rgba(255,255,255,0.72) !important;
+      text-transform: uppercase !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-kicker::before,
+    .spark-game-card.is-minimized .spark-game-kicker::before {
+      content: "SPARKS CAUGHT" !important;
+      font-size: 9.5px !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-kicker,
+    .spark-game-card.is-minimized .spark-game-kicker {
+      font-size: 0 !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-title,
+    .spark-game-card.is-minimized .spark-game-title {
+      display: block !important;
+      font-size: 22px !important;
+      line-height: 1 !important;
+      margin: 0 !important;
+      color: var(--yellow) !important;
+      font-weight: 900 !important;
+      max-width: none !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-copy,
+    .spark-game-card.is-minimized .spark-game-copy,
+    .spark-game-card.is-playing .spark-game-button,
+    .spark-game-card.is-minimized .spark-game-button,
+    .spark-game-card.is-playing .spark-game-reward,
+    .spark-game-card.is-minimized .spark-game-reward,
+    .spark-game-card.is-playing .spark-game-progress,
+    .spark-game-card.is-minimized .spark-game-progress {
+      display: none !important;
+    }
+
+    /* Center the Building Bold / Visual Identities block in the mobile canvas */
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      width: min(100% - 44px, 320px) !important;
+      max-width: 320px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      text-align: left !important;
+      justify-items: start !important;
+    }
+
+    .about-label,
+    .about-kicker,
+    .about-title,
+    .intro-kicker,
+    .intro-title {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      text-align: left !important;
+    }
+
+    /* Let's Talk aligned left with the same centered content column above */
+    .lets-talk-section {
+      width: min(100% - 44px, 320px) !important;
+      max-width: 320px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      justify-items: start !important;
+      text-align: left !important;
+      align-items: start !important;
+    }
+
+    .lets-talk-title {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      text-align: left !important;
+      font-size: clamp(72px, 23vw, 112px) !important;
+      line-height: 0.84 !important;
+    }
+
+    .lets-talk-icons {
+      justify-content: flex-start !important;
+      margin-left: 0 !important;
+    }
+
+    /* Footer centered, HOME active bold and yellow */
+    .footer-inner {
+      width: min(100% - 44px, 320px) !important;
+      max-width: 320px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      bottom: 28px !important;
+      display: grid !important;
+      justify-items: center !important;
+      text-align: center !important;
+      gap: 24px !important;
+    }
+
+    .footer-nav {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 18px 22px !important;
+      flex-wrap: wrap !important;
+      text-align: center !important;
+    }
+
+    .footer-nav a,
+    .footer-nav button {
+      font-size: 12.5px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      line-height: 1.25 !important;
+      color: #fff !important;
+      text-align: center !important;
+    }
+
+    .footer-nav a:first-child,
+    .footer-nav a[href="#home"],
+    .footer-nav a[href="index.html"],
+    .footer-nav a[href="./index.html"],
+    .footer-nav a[href="/"] {
+      color: var(--yellow) !important;
+      font-weight: 950 !important;
+    }
+
+    .footer-copy {
+      width: 100% !important;
+      margin-top: 4px !important;
+      font-size: 11.5px !important;
+      line-height: 1.5 !important;
+      text-align: center !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy,
+    .lets-talk-section,
+    .footer-inner {
+      width: min(100% - 36px, 300px) !important;
+      max-width: 300px !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-title,
+    .spark-game-card.is-minimized .spark-game-title {
+      font-size: 21px !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — restore spark circles + selected work title size */
+  @media (max-width: 700px) {
+    /* Restore the compact card to circles only */
+    .spark-game-card.is-playing,
+    .spark-game-card.is-minimized {
+      top: 66px !important;
+      left: 16px !important;
+      right: 16px !important;
+      width: auto !important;
+      max-width: none !important;
+      min-height: 36px !important;
+      padding: 9px 18px !important;
+      border-radius: 999px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0 !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-kicker,
+    .spark-game-card.is-minimized .spark-game-kicker,
+    .spark-game-card.is-playing .spark-game-title,
+    .spark-game-card.is-minimized .spark-game-title,
+    .spark-game-card.is-playing .spark-game-copy,
+    .spark-game-card.is-minimized .spark-game-copy,
+    .spark-game-card.is-playing .spark-game-button,
+    .spark-game-card.is-minimized .spark-game-button,
+    .spark-game-card.is-playing .spark-game-reward,
+    .spark-game-card.is-minimized .spark-game-reward {
+      display: none !important;
+    }
+
+    .spark-game-card.is-playing .spark-game-progress,
+    .spark-game-card.is-minimized .spark-game-progress {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      width: 100% !important;
+      max-width: 220px !important;
+      margin: 0 auto !important;
+      flex: 0 0 auto !important;
+    }
+
+    .spark-game-card.is-playing .spark-dot,
+    .spark-game-card.is-minimized .spark-dot {
+      width: 10px !important;
+      height: 10px !important;
+      min-width: 10px !important;
+      min-height: 10px !important;
+      border-width: 1.25px !important;
+    }
+
+    /* Any collected/result badge: remove SPARKS CAUGHT and make it smaller */
+    .spark-toast,
+    .spark-message,
+    .spark-status,
+    .spark-collected-toast {
+      font-size: 16px !important;
+      padding: 8px 14px !important;
+      border-radius: 13px !important;
+    }
+
+    .spark-toast::before,
+    .spark-message::before,
+    .spark-status::before,
+    .spark-collected-toast::before {
+      content: none !important;
+      display: none !important;
+    }
+
+    .spark-toast .spark-label,
+    .spark-message .spark-label,
+    .spark-status .spark-label,
+    .spark-collected-toast .spark-label {
+      display: none !important;
+    }
+
+    /* Selected Work title bigger like Services */
+    .selected-work-title {
+      font-size: clamp(72px, 23vw, 126px) !important;
+      line-height: 0.84 !important;
+      letter-spacing: 0.014em !important;
+      text-align: center !important;
+      white-space: normal !important;
+      width: min(100% - 32px, 430px) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .spark-game-card.is-playing .spark-game-progress,
+    .spark-game-card.is-minimized .spark-game-progress {
+      gap: 8px !important;
+      max-width: 205px !important;
+    }
+
+    .spark-game-card.is-playing .spark-dot,
+    .spark-game-card.is-minimized .spark-dot {
+      width: 9px !important;
+      height: 9px !important;
+      min-width: 9px !important;
+      min-height: 9px !important;
+    }
+
+    .selected-work-title {
+      font-size: clamp(68px, 22vw, 112px) !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — final spark completed state + Let's Talk left alignment */
+  @media (max-width: 700px) {
+    /* Default compact/running state remains circles only */
+    .spark-game-card.is-playing:not(.is-complete):not(.is-completed):not(.game-complete):not(.completed),
+    .spark-game-card.is-minimized:not(.is-complete):not(.is-completed):not(.game-complete):not(.completed) {
+      min-height: 36px !important;
+      padding: 9px 18px !important;
+      border-radius: 999px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    /* After collecting all 8 and continuing: show count text instead of circles */
+    .spark-game-card.is-complete,
+    .spark-game-card.is-completed,
+    .spark-game-card.game-complete,
+    .spark-game-card.completed,
+    .spark-game-card[data-complete="true"],
+    .spark-game-card[data-state="complete"],
+    .spark-game-card[data-state="completed"] {
+      top: 66px !important;
+      left: 16px !important;
+      right: 16px !important;
+      width: auto !important;
+      max-width: none !important;
+      min-height: 44px !important;
+      padding: 10px 16px !important;
+      border-radius: 16px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 8px !important;
+    }
+
+    .spark-game-card.is-complete .spark-game-kicker,
+    .spark-game-card.is-completed .spark-game-kicker,
+    .spark-game-card.game-complete .spark-game-kicker,
+    .spark-game-card.completed .spark-game-kicker,
+    .spark-game-card[data-complete="true"] .spark-game-kicker,
+    .spark-game-card[data-state="complete"] .spark-game-kicker,
+    .spark-game-card[data-state="completed"] .spark-game-kicker,
+    .spark-game-card.is-complete .spark-game-copy,
+    .spark-game-card.is-completed .spark-game-copy,
+    .spark-game-card.game-complete .spark-game-copy,
+    .spark-game-card.completed .spark-game-copy,
+    .spark-game-card[data-complete="true"] .spark-game-copy,
+    .spark-game-card[data-state="complete"] .spark-game-copy,
+    .spark-game-card[data-state="completed"] .spark-game-copy,
+    .spark-game-card.is-complete .spark-game-button,
+    .spark-game-card.is-completed .spark-game-button,
+    .spark-game-card.game-complete .spark-game-button,
+    .spark-game-card.completed .spark-game-button,
+    .spark-game-card[data-complete="true"] .spark-game-button,
+    .spark-game-card[data-state="complete"] .spark-game-button,
+    .spark-game-card[data-state="completed"] .spark-game-button,
+    .spark-game-card.is-complete .spark-game-progress,
+    .spark-game-card.is-completed .spark-game-progress,
+    .spark-game-card.game-complete .spark-game-progress,
+    .spark-game-card.completed .spark-game-progress,
+    .spark-game-card[data-complete="true"] .spark-game-progress,
+    .spark-game-card[data-state="complete"] .spark-game-progress,
+    .spark-game-card[data-state="completed"] .spark-game-progress {
+      display: none !important;
+    }
+
+    .spark-game-card.is-complete .spark-game-title,
+    .spark-game-card.is-completed .spark-game-title,
+    .spark-game-card.game-complete .spark-game-title,
+    .spark-game-card.completed .spark-game-title,
+    .spark-game-card[data-complete="true"] .spark-game-title,
+    .spark-game-card[data-state="complete"] .spark-game-title,
+    .spark-game-card[data-state="completed"] .spark-game-title,
+    .spark-game-card.is-complete .spark-game-reward,
+    .spark-game-card.is-completed .spark-game-reward,
+    .spark-game-card.game-complete .spark-game-reward,
+    .spark-game-card.completed .spark-game-reward,
+    .spark-game-card[data-complete="true"] .spark-game-reward,
+    .spark-game-card[data-state="complete"] .spark-game-reward,
+    .spark-game-card[data-state="completed"] .spark-game-reward {
+      display: inline-flex !important;
+      align-items: center !important;
+      margin: 0 !important;
+      color: var(--yellow) !important;
+      font-size: 20px !important;
+      line-height: 1 !important;
+      font-weight: 950 !important;
+      letter-spacing: -0.02em !important;
+      max-width: none !important;
+    }
+
+    /* Make completed text cleaner if the JS writes the reward as "13 SPARKS" */
+    .spark-game-card.is-complete .spark-game-reward,
+    .spark-game-card.is-completed .spark-game-reward,
+    .spark-game-card.game-complete .spark-game-reward,
+    .spark-game-card.completed .spark-game-reward,
+    .spark-game-card[data-complete="true"] .spark-game-reward,
+    .spark-game-card[data-state="complete"] .spark-game-reward,
+    .spark-game-card[data-state="completed"] .spark-game-reward {
+      font-size: 19px !important;
+    }
+
+    /* Let's Talk block: move the whole title + icons further left */
+    .lets-talk-section {
+      width: min(100% - 36px, 430px) !important;
+      max-width: 430px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+      transform: translateX(-18px) !important;
+      justify-items: start !important;
+      text-align: left !important;
+      align-items: start !important;
+    }
+
+    .lets-talk-title,
+    .lets-talk-icons {
+      margin-left: 0 !important;
+      transform: none !important;
+      text-align: left !important;
+      justify-content: flex-start !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .lets-talk-section {
+      transform: translateX(-12px) !important;
+    }
+
+    .spark-game-card.is-complete .spark-game-title,
+    .spark-game-card.is-completed .spark-game-title,
+    .spark-game-card.game-complete .spark-game-title,
+    .spark-game-card.completed .spark-game-title,
+    .spark-game-card[data-complete="true"] .spark-game-title,
+    .spark-game-card[data-state="complete"] .spark-game-title,
+    .spark-game-card[data-state="completed"] .spark-game-title,
+    .spark-game-card.is-complete .spark-game-reward,
+    .spark-game-card.is-completed .spark-game-reward,
+    .spark-game-card.game-complete .spark-game-reward,
+    .spark-game-card.completed .spark-game-reward,
+    .spark-game-card[data-complete="true"] .spark-game-reward,
+    .spark-game-card[data-state="complete"] .spark-game-reward,
+    .spark-game-card[data-state="completed"] .spark-game-reward {
+      font-size: 18px !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — add breathing space between sections */
+  @media (max-width: 700px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      margin-bottom: 48px !important;
+      padding-bottom: 18px !important;
+    }
+
+    .services,
+    .services-section,
+    .build-section,
+    .what-can-section {
+      padding-top: 52px !important;
+    }
+
+    /* Specifically add space before "What Can We Help You Build" */
+    .services-title,
+    .build-title,
+    .what-can-title,
+    .section-title {
+      margin-top: 28px !important;
+    }
+
+    /* Keep Selected Work from sitting too close after previous section */
+    .selected-work-section {
+      padding-top: 76px !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      margin-bottom: 40px !important;
+    }
+
+    .services,
+    .services-section,
+    .build-section,
+    .what-can-section {
+      padding-top: 44px !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — tighter completed sparks card */
+  @media (max-width: 700px) {
+    .spark-game-card.is-complete,
+    .spark-game-card.is-completed,
+    .spark-game-card.game-complete,
+    .spark-game-card.completed,
+    .spark-game-card[data-complete="true"],
+    .spark-game-card[data-state="complete"],
+    .spark-game-card[data-state="completed"] {
+      min-height: 38px !important;
+      padding: 7px 14px !important;
+      border-radius: 13px !important;
+      gap: 6px !important;
+    }
+
+    .spark-game-card.is-complete .spark-game-title,
+    .spark-game-card.is-completed .spark-game-title,
+    .spark-game-card.game-complete .spark-game-title,
+    .spark-game-card.completed .spark-game-title,
+    .spark-game-card[data-complete="true"] .spark-game-title,
+    .spark-game-card[data-state="complete"] .spark-game-title,
+    .spark-game-card[data-state="completed"] .spark-game-title,
+    .spark-game-card.is-complete .spark-game-reward,
+    .spark-game-card.is-completed .spark-game-reward,
+    .spark-game-card.game-complete .spark-game-reward,
+    .spark-game-card.completed .spark-game-reward,
+    .spark-game-card[data-complete="true"] .spark-game-reward,
+    .spark-game-card[data-state="complete"] .spark-game-reward,
+    .spark-game-card[data-state="completed"] .spark-game-reward {
+      font-size: 16px !important;
+      line-height: 1 !important;
+      letter-spacing: -0.01em !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .spark-game-card.is-complete,
+    .spark-game-card.is-completed,
+    .spark-game-card.game-complete,
+    .spark-game-card.completed,
+    .spark-game-card[data-complete="true"],
+    .spark-game-card[data-state="complete"],
+    .spark-game-card[data-state="completed"] {
+      min-height: 36px !important;
+      padding: 6px 12px !important;
+    }
+
+    .spark-game-card.is-complete .spark-game-title,
+    .spark-game-card.is-completed .spark-game-title,
+    .spark-game-card.game-complete .spark-game-title,
+    .spark-game-card.completed .spark-game-title,
+    .spark-game-card[data-complete="true"] .spark-game-title,
+    .spark-game-card[data-state="complete"] .spark-game-title,
+    .spark-game-card[data-state="completed"] .spark-game-title,
+    .spark-game-card.is-complete .spark-game-reward,
+    .spark-game-card.is-completed .spark-game-reward,
+    .spark-game-card.game-complete .spark-game-reward,
+    .spark-game-card.completed .spark-game-reward,
+    .spark-game-card[data-complete="true"] .spark-game-reward,
+    .spark-game-card[data-state="complete"] .spark-game-reward,
+    .spark-game-card[data-state="completed"] .spark-game-reward {
+      font-size: 15px !important;
+    }
+  }
+
+
+  /* DESKTOP + GLOBAL FINAL POLISH */
+  @media (min-width: 701px) {
+    /* Center the bold brand intro block on desktop */
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      width: min(100% - 80px, 1080px) !important;
+      max-width: 1080px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+      justify-items: center !important;
+      align-items: center !important;
+    }
+
+    .about-label,
+    .about-kicker,
+    .about-title,
+    .intro-kicker,
+    .intro-title {
+      width: 100% !important;
+      max-width: 980px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+
+    .about-title,
+    .intro-title {
+      text-align: center !important;
+    }
+
+    .about-title strong,
+    .intro-title strong,
+    .about-title .yellow,
+    .intro-title .yellow,
+    .stand-out,
+    .standout {
+      font-weight: 900 !important;
+      color: var(--yellow) !important;
+    }
+
+    /* Footer centered on desktop */
+    .footer-inner {
+      width: min(100% - 80px, 1080px) !important;
+      max-width: 1080px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      display: grid !important;
+      justify-items: center !important;
+      text-align: center !important;
+      gap: 24px !important;
+    }
+
+    .footer-nav {
+      width: 100% !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 42px !important;
+      text-align: center !important;
+    }
+
+    .footer-nav a,
+    .footer-nav button {
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.085em !important;
+      line-height: 1.25 !important;
+      color: #fff !important;
+    }
+
+    .footer-nav a:first-child,
+    .footer-nav a[href="#home"],
+    .footer-nav a[href="index.html"],
+    .footer-nav a[href="./index.html"],
+    .footer-nav a[href="/"] {
+      color: var(--yellow) !important;
+      font-weight: 950 !important;
+    }
+
+    .footer-copy {
+      width: 100% !important;
+      text-align: center !important;
+      font-size: 12.5px !important;
+      line-height: 1.45 !important;
+    }
+  }
+
+  /* GAME SPEED FIX — first 8 sparks appear faster */
+  .spark,
+  .creative-spark,
+  .spark-target,
+  .game-spark {
+    animation-duration: 420ms !important;
+    transition-duration: 120ms !important;
+  }
+
+  .spark-game-card,
+  .spark-game-progress,
+  .spark-dot {
+    transition-duration: 120ms !important;
+  }
+
+
+  /* FINAL FIX — View More opens + mobile intro centered */
+  .view-more,
+  .view-more-btn,
+  .work-view-more,
+  .selected-work-view-more,
+  .show-more-work,
+  .show-more-projects {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+  }
+
+  .selected-work-list.is-expanded .is-hidden,
+  .selected-work-list.is-expanded .work-hidden,
+  .selected-work-list.is-expanded .hidden-work,
+  .selected-work-list.is-expanded .selected-work-row:nth-child(n+3) {
+    display: grid !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  @media (max-width: 700px) {
+    /* Center the intro/about block like desktop */
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      width: min(100% - 44px, 340px) !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+      justify-items: center !important;
+      align-items: center !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+
+    .about-label,
+    .about-kicker,
+    .about-title,
+    .intro-kicker,
+    .intro-title {
+      width: 100% !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+
+    .about-title,
+    .intro-title {
+      text-align: center !important;
+      font-size: clamp(30px, 8.5vw, 42px) !important;
+      line-height: 1.08 !important;
+      letter-spacing: -0.045em !important;
+    }
+  }
+
+
+  /* MOBILE ONLY — center intro block vertically in its section */
+  @media (max-width: 700px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      min-height: 58svh !important;
+      width: min(100% - 44px, 340px) !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-top: 32px !important;
+      padding-bottom: 56px !important;
+      display: grid !important;
+      align-content: center !important;
+      justify-content: center !important;
+      justify-items: center !important;
+      text-align: center !important;
+    }
+
+    .about-label,
+    .about-kicker,
+    .about-title,
+    .intro-kicker,
+    .intro-title {
+      width: 100% !important;
+      max-width: 340px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      text-align: center !important;
+    }
+
+    .about-title,
+    .intro-title {
+      text-align: center !important;
+      margin-top: 22px !important;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .about,
+    .about-section,
+    .intro-section,
+    .brand-intro,
+    .intro-copy {
+      min-height: 56svh !important;
+      width: min(100% - 36px, 310px) !important;
+      max-width: 310px !important;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -8326,6 +9111,128 @@ margin-bottom: 0;
 
         item.classList.toggle("is-open", !isOpen);
         trigger.setAttribute("aria-expanded", String(!isOpen));
+      });
+    });
+  })();
+</script>
+
+
+<script id="mobile-spark-complete-state-fix">
+  (() => {
+    const card = document.querySelector(".spark-game-card");
+    if (!card) return;
+
+    const title = card.querySelector(".spark-game-title");
+    const reward = card.querySelector(".spark-game-reward");
+
+    function extractCount() {
+      const text = `${title ? title.textContent : ""} ${reward ? reward.textContent : ""}`;
+      const match = text.match(/(\d+)\s*\/\s*8|(\d+)\s*SPARKS?/i);
+      if (!match) return null;
+      return Number(match[1] || match[2]);
+    }
+
+    function sync() {
+      const count = extractCount();
+      const complete = count !== null && count >= 8;
+      card.classList.toggle("is-complete", complete);
+      if (complete) {
+        card.setAttribute("data-complete", "true");
+      } else {
+        card.removeAttribute("data-complete");
+      }
+    }
+
+    sync();
+
+    const observer = new MutationObserver(sync);
+    observer.observe(card, {
+      subtree: true,
+      childList: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["class", "data-state"]
+    });
+
+    document.addEventListener("click", () => requestAnimationFrame(sync), true);
+    document.addEventListener("pointerup", () => requestAnimationFrame(sync), true);
+  })();
+</script>
+
+
+<script id="spark-speed-final-fix">
+  (() => {
+    /* Make the first 8 collectible sparks feel faster without changing the game design. */
+    window.SPARK_INITIAL_DELAY = 120;
+    window.SPARK_SPAWN_DELAY = 120;
+    window.SPARK_SPAWN_INTERVAL = 220;
+    window.SPARK_ANIMATION_DELAY = 80;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      @media (hover: hover) and (pointer: fine) {
+        .spark, .creative-spark, .spark-target, .game-spark {
+          animation-delay: 0ms !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  })();
+</script>
+
+
+<script id="view-more-work-final-fix">
+  (() => {
+    const buttons = Array.from(document.querySelectorAll(
+      '.view-more, .view-more-btn, .work-view-more, .selected-work-view-more, .show-more-work, .show-more-projects, a[href="#more-work"], a[href="#work-more"]'
+    ));
+
+    const selectedSection =
+      document.querySelector('.selected-work-section') ||
+      document.querySelector('#work') ||
+      document.querySelector('.work-section');
+
+    const list =
+      document.querySelector('.selected-work-list') ||
+      document.querySelector('.work-list') ||
+      selectedSection?.querySelector('[class*="list"]');
+
+    const rows = Array.from(document.querySelectorAll('.selected-work-row, .work-row, .project-row, .work-card'));
+
+    function showAllWork(event) {
+      if (event) event.preventDefault();
+
+      if (list) list.classList.add('is-expanded');
+      if (selectedSection) selectedSection.classList.add('is-expanded');
+
+      rows.forEach((row) => {
+        row.classList.remove('is-hidden', 'work-hidden', 'hidden-work');
+        row.hidden = false;
+        row.style.display = '';
+        row.style.opacity = '1';
+        row.style.visibility = 'visible';
+      });
+
+      buttons.forEach((button) => {
+        button.classList.add('is-open');
+        const textNode = Array.from(button.childNodes).find((node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim());
+        if (textNode && /view more/i.test(textNode.textContent)) {
+          textNode.textContent = textNode.textContent.replace(/view more/i, 'View Less');
+        } else if (/view more/i.test(button.textContent)) {
+          button.setAttribute('aria-label', 'View Less');
+        }
+      });
+
+      if (selectedSection) {
+        selectedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    buttons.forEach((button) => {
+      button.setAttribute('role', button.tagName === 'A' ? button.getAttribute('role') || 'button' : button.getAttribute('role') || 'button');
+      button.addEventListener('click', showAllWork);
+      button.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') showAllWork(event);
       });
     });
   })();
